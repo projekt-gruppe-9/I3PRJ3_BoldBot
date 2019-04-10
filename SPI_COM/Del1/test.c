@@ -10,10 +10,13 @@ void sendSPI(int);
 
 int main(){
 
-  while(1){
-    sendSPI(12);
 
-    usleep(200);
+  int num_ = 0;
+
+  while(1){
+    sendSPI(num_);
+    num_++;
+    usleep(250000);
 /*
     int rec = receiveSPI();
     printf("Value received: %d",rec);*/

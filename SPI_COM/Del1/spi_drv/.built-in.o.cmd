@@ -1,0 +1,1 @@
+cmd_/home/stud/PRJ/projekt-gruppe-9-repo/SPI_COM/Del1/spi_drv/built-in.o :=  rm -f /home/stud/PRJ/projekt-gruppe-9-repo/SPI_COM/Del1/spi_drv/built-in.o; arm-poky-linux-gnueabi-ar rcSTPD /home/stud/PRJ/projekt-gruppe-9-repo/SPI_COM/Del1/spi_drv/built-in.o

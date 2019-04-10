@@ -164,8 +164,7 @@ ssize_t spi_drv_read(struct file *filep, char __user *ubuf,
 {
   int minor, len;
   char resultBuf[MAXLEN];
-  int result = 0;
-  int *res_ = &result;
+  u8 result;
   minor = iminor(filep->f_inode);
 
   /*
@@ -180,7 +179,8 @@ ssize_t spi_drv_read(struct file *filep, char __user *ubuf,
   m.spi = spi_devs[0].spi;
 
   t[0].tx_buf = NULL;
-  t[0].rx_buf = res_;
+  //result = *((int *)t[0].rx_buf);
+  t[0].rx_buf = result;
   t[0].len = 1;
   spi_message_add_tail(&t[0], &m);
 
@@ -322,5 +322,5 @@ module_exit(spi_drv_exit);
 /*
  * Assignment of author and license
  */
-MODULE_AUTHOR("Peter Hoegh Mikkelsen <phm@ase.au.dk>");
+MODULE_AUTHOR("Mark Hansen");
 MODULE_LICENSE("GPL");
