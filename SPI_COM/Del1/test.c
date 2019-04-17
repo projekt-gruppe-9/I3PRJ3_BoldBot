@@ -11,15 +11,16 @@ void sendSPI(int);
 int main(){
 
 
-  int num_ = 0;
+  u_int8_t num_ = 0;
 
   while(1){
     sendSPI(num_);
     num_++;
-    usleep(250000);
-/*
+    usleep(1000000);
+
     int rec = receiveSPI();
-    printf("Value received: %d",rec);*/
+    printf("Value received: %u\n",rec);
+
   }
 
   return 0;
@@ -30,7 +31,7 @@ void sendSPI(int sendbyte){
 
   char ubuf[8];
 
-  int len = snprintf(ubuf, sizeof(ubuf), "%d\n", sendbyte);
+  int len = snprintf(ubuf, sizeof(ubuf), "%u\n", sendbyte);
   if(len < 0){
     printf("Error in receiving");
   }

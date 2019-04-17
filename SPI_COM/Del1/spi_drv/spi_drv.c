@@ -20,7 +20,7 @@ struct Myspi {
 };
 /* Array of SPI devices */
 /* Minor used to index array */
-struct Myspi spi_devs[4];
+struct Myspi spi_devs[2];
 const int spi_devs_len = 4;  // Max nbr of devices
 static int spi_devs_cnt = 0; // Nbr devices present
 
@@ -179,8 +179,7 @@ ssize_t spi_drv_read(struct file *filep, char __user *ubuf,
   m.spi = spi_devs[0].spi;
 
   t[0].tx_buf = NULL;
-  //result = *((int *)t[0].rx_buf);
-  t[0].rx_buf = result;
+  t[0].rx_buf = &result;
   t[0].len = 1;
   spi_message_add_tail(&t[0], &m);
 

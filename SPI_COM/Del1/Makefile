@@ -1,4 +1,4 @@
-SOURCES=test.c
+SOURCES=SPIFunc.cpp
 OBJECTS=${SOURCES:.c=.o}
 EXE=test_exe
 CXX=arm-rpizw-gcc
