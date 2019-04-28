@@ -1,0 +1,1 @@
+cmd_/home/stud/git/projekt-gruppe-9-repo/rpiReadGPIO/built-in.o :=  rm -f /home/stud/git/projekt-gruppe-9-repo/rpiReadGPIO/built-in.o; arm-poky-linux-gnueabi-ar rcSTPD /home/stud/git/projekt-gruppe-9-repo/rpiReadGPIO/built-in.o
