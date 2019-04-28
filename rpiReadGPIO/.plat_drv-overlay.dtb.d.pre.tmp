@@ -1,2 +1,0 @@
-plat_drv-overlay.o: \
- /home/stud/git/projekt-gruppe-9-repo/rpiReadGPIO/plat_drv-overlay.dts
