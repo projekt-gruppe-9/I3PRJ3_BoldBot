@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Motorstyring\Motorstyring\Source Files\main.c">
+<ExpandedNodeIds>
+<v>Motorstyring</v>
+<v>Motorstyring\Motorstyring</v>
+<v>Motorstyring\Motorstyring\TopDesign</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr\Pins</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr\Analog</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr\Clocks</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr\Interrupts</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr\DMA</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr\System</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr\Directives</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr\Flash Security</v>
+<v>Motorstyring\Motorstyring\Motorstyring.cydwr\EEPROM</v>
+<v>Motorstyring\Motorstyring\Header Files</v>
+<v>Motorstyring\Motorstyring\Header Files\cyapicallbacks.h</v>
+<v>Motorstyring\Motorstyring\Header Files\motorFunktioner.h</v>
+<v>Motorstyring\Motorstyring\Header Files\sonar.h</v>
+<v>Motorstyring\Motorstyring\Source Files</v>
+<v>Motorstyring\Motorstyring\Source Files\main.c</v>
+<v>Motorstyring\Motorstyring\Source Files\motorFunktioner.c</v>
+<v>Motorstyring\Motorstyring\Source Files\sonar.c</v>
+<v>Motorstyring\Motorstyring\Generated_Source</v>
+<v>Motorstyring\Motorstyring\Generated_Source\PSoC5</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Motorstyring</v>
+<v>Motorstyring\Motorstyring</v>
+<v>Motorstyring\Motorstyring\TopDesign</v>
+<v>Motorstyring\Motorstyring\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Motorstyring</v>
+<v>Motorstyring\Motorstyring</v>
+<v>Motorstyring\Motorstyring\CortexM3</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calL.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calL_INT.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calL_IRQ.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calL_PM.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calL_theACLK.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calR.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calR_INT.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calR_IRQ.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calR_PM.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_calR_theACLK.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\cal_L.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\cal_R.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_2.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Enable_Left.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Enable_Right.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_Master.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_Master_BOOT.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_Master_INT.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_Master_MASTER.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_Master_PM.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_Master_SLAVE.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\ISR_SLAVE_RX.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\MISO_1.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\mode.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\mode_PM.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\MOSI_1.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Motor_L_F.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Motor_L_R.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Motor_R_F.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Motor_R_R.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\motorFunktioner.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Motorpwm_Left.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Motorpwm_Left_PM.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Motorpwm_right.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Motorpwm_right_PM.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin1.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL_1.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\SCLK_1.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\sonar.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\SPI_SS.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIS_1.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIS_1_BOOT.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIS_1_INT.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\SPIS_1_PM.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_BOOT.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_INT.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_IntClock.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_1_PM.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_rx.lst</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Motorstyring.elf</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Motorstyring.hex</v>
+<v>Motorstyring\Motorstyring\CortexM3\ARM_GCC_541\Debug\Motorstyring.map</v>
+<v>Motorstyring\Motorstyring\Motorstyring.gpdsc</v>
+<v>Motorstyring\Motorstyring\Motorstyring.rpt</v>
+<v>Motorstyring\Motorstyring\Motorstyring_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Motorstyring</v>
+<v>Motorstyring\Motorstyring</v>
+<v>Motorstyring\Motorstyring\PSoC 5LP Architecture TRM</v>
+<v>Motorstyring\Motorstyring\CY8C58LP Family Datasheet</v>
+<v>Motorstyring\Motorstyring\System Reference Guides</v>
+<v>Motorstyring\Motorstyring\System Reference Guides\cy_boot_v5_80</v>
+<v>Motorstyring\Motorstyring\ADC_SAR_v3_10</v>
+<v>Motorstyring\Motorstyring\ADC_SAR_v3_10\ADC_SAR_v3_10.pdf</v>
+<v>Motorstyring\Motorstyring\cy_clock_v2_20</v>
+<v>Motorstyring\Motorstyring\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>Motorstyring\Motorstyring\cy_constant_v1_0.pdf</v>
+<v>Motorstyring\Motorstyring\cy_isr_v1_70</v>
+<v>Motorstyring\Motorstyring\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>Motorstyring\Motorstyring\cy_pins_v2_20</v>
+<v>Motorstyring\Motorstyring\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Motorstyring\Motorstyring\CyControlReg_v1_80.pdf</v>
+<v>Motorstyring\Motorstyring\demux_v1_10</v>
+<v>Motorstyring\Motorstyring\demux_v1_10\demux_v1_10.pdf</v>
+<v>Motorstyring\Motorstyring\I2C_v3_50.pdf</v>
+<v>Motorstyring\Motorstyring\or_v1_0</v>
+<v>Motorstyring\Motorstyring\or_v1_0\or_v1_0.pdf</v>
+<v>Motorstyring\Motorstyring\PWM_v3_30</v>
+<v>Motorstyring\Motorstyring\PWM_v3_30\PWM_v3_30.pdf</v>
+<v>Motorstyring\Motorstyring\SPI_Slave_v2_70.pdf</v>
+<v>Motorstyring\Motorstyring\UART_v2_50.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds />
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Motorstyring.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Motorstyring.cydsn\motorFunktioner.h" />
+<name v=".\Motorstyring.cydsn\main.c" />
+<name v=".\Motorstyring.cydsn\Motorstyring.cydwr" />
+<name v=".\Motorstyring.cydsn\Generated_Source\PSoC5\SPIS_1.h" />
+<name v=".\Motorstyring.cydsn\sonar.c" />
+<name v=".\Motorstyring.cydsn\sonar.h" />
+<name v=".\Motorstyring.cydsn\motorFunktioner.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1605, 711" SelectedTabbedMdiWindow="658d9679-21bb-46d4-9b8e-eb8ccd2f3efc"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="44ca7f8c-624d-4b2f-b193-b2b492300900" /><DocumentWindow Key="C:\Users\andre\Desktop\Motorstyring\Motorstyring.cydsn\TopDesign\TopDesign.cysch" Guid="612db435-0c41-4733-8202-c3a660f6155a" /><DocumentWindow Key="C:\Users\andre\Desktop\Motorstyring\Motorstyring.cydsn\motorFunktioner.h" Guid="7bf3457f-a741-4898-bbb0-16b793956d3b" /><DocumentWindow Key="C:\Users\andre\Desktop\Motorstyring\Motorstyring.cydsn\main.c" Guid="658d9679-21bb-46d4-9b8e-eb8ccd2f3efc" /><DocumentWindow Key="C:\Users\andre\Desktop\Motorstyring\Motorstyring.cydsn\Motorstyring.cydwr" Guid="3cf92e0d-d3ef-4bc0-8000-483787033c0e" /><DocumentWindow Key="C:\Users\andre\Desktop\Motorstyring\Motorstyring.cydsn\Generated_Source\PSoC5\SPIS_1.h" Guid="0e8484f3-70c8-4604-87c5-56b92ec49ccf" /><DocumentWindow Key="C:\Users\andre\Desktop\Motorstyring\Motorstyring.cydsn\sonar.c" Guid="0f0cbeaa-a2ee-4742-a449-2075885cc7a7" /><DocumentWindow Key="C:\Users\andre\Desktop\Motorstyring\Motorstyring.cydsn\sonar.h" Guid="804ab35d-d726-4545-abb7-3c358fbc583c" /><DocumentWindow Key="C:\Users\andre\Desktop\Motorstyring\Motorstyring.cydsn\motorFunktioner.c" Guid="ccedfb36-f61d-43a7-9f04-82fa38ce59df" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

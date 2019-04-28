@@ -1,6 +1,0 @@
-C:\Users\bella\OneDrive\Skrivebord\H-bro\semester3_prj_motorstyring\semester3_prj_motorstyring.cydsn\semester3_prj_motorstyring.cyprj|a4a124af-bc2d-4ce3-807a-0e161b456f16
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|50c3d338-2fe6-4af2-a9cb-982d68184949
-C:\Users\bella\OneDrive\Dokumenter\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|91d07486-9495-47dc-8e00-351e64864dda
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|3ddf32f5-2b04-4344-9ad1-87eeac3969fc
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|9e3ec6ee-8dce-463c-b619-47746c7a63b3
-C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d45b6f30-5faa-48ff-a4cb-6336333d9fac
