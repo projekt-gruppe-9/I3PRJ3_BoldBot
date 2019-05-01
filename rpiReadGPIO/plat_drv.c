@@ -27,7 +27,6 @@ int gpio_devs_cnt = 0;
 //sleep function ===========================================
 static int flag = 0;
 static DECLARE_WAIT_QUEUE_HEAD(waitQueue);
-
 //ISR rutine implementering
 #define IRQF_TRIGGER_NONE 0x00000000
 #define IRQF_TRIGGER_RISING 0x00000001
@@ -225,8 +224,8 @@ ssize_t platDriver_read(struct file *filep, char __user *buf, size_t count, loff
   int minor = iminor(filep -> f_inode);
 
   //Tilføjet interrupt rutine
-  wait_event_interruptible(waitQueue, flag != 0);
-  flag = 0;
+  //wait_event_interruptible(waitQueue, flag != 0);
+  //flag = 0;
 
   int value = gpio_get_value(gpio_devs[minor].no);
   char buff[32];
