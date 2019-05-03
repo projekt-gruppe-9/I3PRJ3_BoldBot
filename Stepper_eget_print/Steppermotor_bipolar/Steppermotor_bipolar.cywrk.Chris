@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\TopDesign</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Pins</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Analog</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Clocks</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Interrupts</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\DMA</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\System</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Directives</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Flash Security</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\EEPROM</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Header Files</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Header Files\cyapicallbacks.h</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Source Files</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Source Files\main.c</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\TopDesign</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Pins</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Analog</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Clocks</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Interrupts</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\DMA</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\System</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Directives</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\Flash Security</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.cydwr\EEPROM</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Header Files</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Header Files\cyapicallbacks.h</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Source Files</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Source Files\main.c</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\A</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\A_inv</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\B</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\B_inv</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\Clock_1</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cy_boot</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\Stepper_control</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\Steps</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cydevice.h</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cyfitter.h</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\cymetadata.c</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Generated_Source\PSoC5\project.h</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\TopDesign</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\TopDesign</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\A.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\A_inv.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\B.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\B_inv.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\Stepper_control.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\Stepper_control_PM.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\Steps.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Listing Files\Steps_PM.lst</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Steppermotor_bipolar.elf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Steppermotor_bipolar.hex</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CortexM3\ARM_GCC_541\Debug\Steppermotor_bipolar.map</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.gpdsc</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.rpt</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar.rpt</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\Steppermotor_bipolar_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\PSoC 5LP Architecture TRM</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CY8C58LP Family Datasheet</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\System Reference Guides</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\System Reference Guides\cy_boot_v5_80</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\and_v1_0</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\and_v1_0\and_v1_0.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\BasicCounter_v1_0</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\BasicCounter_v1_0\BasicCounter_v1_0.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_clock_v2_20.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_pins_v2_20</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CyControlReg_v1_80</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\LUT_v1_60</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\LUT_v1_60\LUT_v1_60.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\mux_v1_10</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\mux_v1_10\mux_v1_10.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\nand_v1_0.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\not_v1_0</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\not_v1_0\not_v1_0.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\or_v1_0</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\or_v1_0\or_v1_0.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\PSoC 5LP Architecture TRM</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CY8C58LP Family Datasheet</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\System Reference Guides</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\System Reference Guides\cy_boot_v5_80</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\and_v1_0</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\and_v1_0\and_v1_0.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\BasicCounter_v1_0</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\BasicCounter_v1_0\BasicCounter_v1_0.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_clock_v2_20.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_pins_v2_20</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CyControlReg_v1_80</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\LUT_v1_60</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\LUT_v1_60\LUT_v1_60.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\mux_v1_10</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\mux_v1_10\mux_v1_10.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\nand_v1_0.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\not_v1_0</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\not_v1_0\not_v1_0.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\or_v1_0</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\or_v1_0\or_v1_0.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs />
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

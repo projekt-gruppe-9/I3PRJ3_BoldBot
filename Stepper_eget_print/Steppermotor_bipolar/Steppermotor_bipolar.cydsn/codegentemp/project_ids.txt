@@ -1,0 +1,6 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|3db717cc-e9d8-44ba-9352-645f7a18e4a8
+C:\Users\Chris\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|aaba054e-e021-4ea9-b3ff-6928a8457413
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|542dbd98-5d1b-47a1-b7c8-22ed5bd1ac87
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|b82b3929-3637-4ed0-b0c2-f7ba6c96406b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|7a8e1b15-19c3-45fa-b88b-8a01a6b484e8
+C:\Users\Chris\Documents\PSoC Creator\Steppermotor_bipolar\Steppermotor_bipolar.cydsn\Steppermotor_bipolar.cyprj|453d0db0-0e2b-43f7-a7bf-db3b7838eb50
