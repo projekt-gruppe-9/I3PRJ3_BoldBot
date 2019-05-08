@@ -10,14 +10,10 @@
 #include <linux/of_address.h>
 #include <linux/of_device.h>
 #include <linux/of_irq.h>
-//Interrupt rutine
-#include <linux/interrupt.h>
-#include <linux/wait.h>
-#include <linux/sched.h>
 //License===================================================
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Hallal");
-MODULE_DESCRIPTION("Hot-pluggable device driver");
+MODULE_AUTHOR("Projektgruppe 9");
+MODULE_DESCRIPTION("Driver til read/write på gpio port");
 // Variables==================================================
 #define MINOR_NBR 255
 #define nbr_devices 1
@@ -25,15 +21,9 @@ static dev_t devno;
 const int minor_no = 0;
 int gpio_devs_cnt = 0;
 //sleep function ===========================================
-static int flag = 0;
 static DECLARE_WAIT_QUEUE_HEAD(waitQueue);
-//ISR rutine implementering
-#define IRQF_TRIGGER_NONE 0x00000000
 #define IRQF_TRIGGER_RISING 0x00000001
 #define IRQF_TRIGGER_FALLING 0x00000002
-#define IRQF_TRIGGER_HIGH 0x00000004
-#define IRQF_TRIGGER_LOW 0x00000008
-static unsigned int irq_no = 0;
 void* dev_id = NULL;
 //Prototypes============================================
 static int platDriver_init(void);
@@ -73,17 +63,6 @@ struct gpio_dev {
   //char name[50]; //GPIO name
 };
 static struct gpio_dev gpio_devs[255] = {};
-
-//interrupt rutine
-static irqreturn_t sonarinputDriver_isr(int irq, void *dev_id)
-{
-  printk("irq event at irq line: %i\n", irq_no);
-  printk("Process %i (%s) awakening the readers...\n", current->pid, current->comm);
-  flag = 1;
-  wake_up_interruptible(&waitQueue);
-  return IRQ_HANDLED;
-}
-//Implementering=======================================
 //Init function ========================================
 static int platDriver_init(void){
   int err = 0;
@@ -169,28 +148,7 @@ static int platDriver_probe (struct platform_device *pdev){
     gpio_devs_cnt++;
   }
 
-  //interrupt er forbundet til GPIO
-
-  irq_no = gpio_to_irq(gpio_devs[0].no);
-  if (irq_no < 0)
-  {
-      goto gpioToIrqError;
-  }
-  //Anmoder om interrupt
-  err = request_irq(irq_no, sonarinputDriver_isr, IRQF_TRIGGER_RISING, NULL, NULL);
-  if (err != 0)
-    {
-      goto requestIrqError;
-    }
-  printk("irq assigned: %d\n", irq_no);
-
   return 0; //success
-
-  requestIrqError:
-		printk("irq request error\n");
-
-	gpioToIrqError:
-		printk("irq to GPIO error\n");
 
   err_exit:
     //Free GPIO
@@ -222,10 +180,6 @@ ssize_t platDriver_read(struct file *filep, char __user *buf, size_t count, loff
 
   int err, len;
   int minor = iminor(filep -> f_inode);
-
-  //Tilføjet interrupt rutine
-  //wait_event_interruptible(waitQueue, flag != 0);
-  //flag = 0;
 
   int value = gpio_get_value(gpio_devs[minor].no);
   char buff[32];
@@ -269,9 +223,7 @@ static int platDriver_remove(struct platform_device *pdev){
   return 0;
 }
 //Exit function ===================================================
-static void platDriver_exit(void){
-  //frigør interrupt
-  free_irq(irq_no, NULL);
+static void platDriver_exit(void) {
   cdev_del(&plat_drv_cdev);
   class_destroy(plat_drv_class);
   platform_driver_unregister(&plat_drv_platform_driver);

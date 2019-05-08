@@ -1,0 +1,1 @@
+cmd_/home/stud/git/projekt-gruppe-9-repo/rpiReadGPIO/plat_drv.ko := arm-poky-linux-gnueabi-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/stud/git/projekt-gruppe-9-repo/rpiReadGPIO/plat_drv.ko /home/stud/git/projekt-gruppe-9-repo/rpiReadGPIO/plat_drv.o /home/stud/git/projekt-gruppe-9-repo/rpiReadGPIO/plat_drv.mod.o ;  true
