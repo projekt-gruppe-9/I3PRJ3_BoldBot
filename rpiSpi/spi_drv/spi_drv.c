@@ -4,8 +4,8 @@
 #include <linux/spi/spi.h> // spi_sync,
 //License===================================================
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Hallal");
-MODULE_DESCRIPTION("Spi driver");
+MODULE_AUTHOR("Projektgruppe 9");
+MODULE_DESCRIPTION("Spi driver for read/send to PSoC");
 // Variables==================================================
 #define MAXLEN 32
 #define MODULE_DEBUG 1 // Enable/disable debug messages
@@ -14,15 +14,11 @@ static struct class *spi_drv_class;
 static dev_t devno;
 static struct cdev spi_drv_cdev;
 //Definition of SPI devices
-struct Myspi {
-  struct spi_device *spi; // Pointer to SPI device
+struct My_spi {
+  struct spi_device *spi; //pointer som peger på device
   int channel;            // channel, ex. adc ch 0
 };
-/* Array of SPI devices */
-/* Minor used to index array */
-struct Myspi spi_devs[4];
-const int spi_devs_len = 4;  // Max nbr of devices
-static int spi_devs_cnt = 0; // Nbr devices present
+struct My_spi spi_devs[4];//Array af SPI devices
 //Prototypes============================================
 static int spiDriver_init(void);
 static void spiDriver_exit(void);
@@ -49,13 +45,12 @@ struct file_operations spi_drv_fops = {
     .read = spiDriver_read,
     .write = spiDriver_write,
 };
-/* Macro to handle Errors */
+//Macro der håndterer errors
 #define ERRGOTO(label, ...)                     \
   {                                             \
     printk (__VA_ARGS__);                       \
     goto label;                                 \
   } while(0)
-//Implementering=======================================
 //Init function ========================================
 static int spiDriver_init(void){
   int err=0;
@@ -64,30 +59,31 @@ static int spiDriver_init(void){
 
   /* Allocate major number and register fops*/
   err = alloc_chrdev_region(&devno, 0, 255, "spi_drv driver");
-  if(MAJOR(devno) <= 0)
+  if(MAJOR(devno) <= 0){
     ERRGOTO(err_no_cleanup, "Failed to register chardev\n");
+  }
   printk(KERN_ALERT "Assigned major no: %i\n", MAJOR(devno));
 
   cdev_init(&spi_drv_cdev, &spi_drv_fops);
   err = cdev_add(&spi_drv_cdev, devno, 255);
-  if (err)
+  if (err){
     ERRGOTO(err_cleanup_chrdev, "Failed to create class");
+  }
 
   /* Polulate sysfs entries */
   spi_drv_class = class_create(THIS_MODULE, "spi_drv_class");
-  if (IS_ERR(spi_drv_class))
-    ERRGOTO(err_cleanup_cdev, "Failed to create class");
+  if (IS_ERR(spi_drv_class)){
+      ERRGOTO(err_cleanup_cdev, "Failed to create class");
+  }
 
-  /* Register SPI Driver */
-  /* THIS WILL INVOKE PROBE, IF DEVICE IS PRESENT!!! */
-  err = spi_register_driver(&spi_drv_spi_driver);
-  if(err)
+  err = spi_register_driver(&spi_drv_spi_driver); //Registrerer SPI driver som vil kalde probe hvis device bliver oprettet
+  if(err) {
     ERRGOTO(err_cleanup_class, "Failed SPI Registration\n");
+  }
 
-  /* Success */
-  return 0;
+  return 0; //Succes/errors håndtering bliver ikke kørt
 
-  /* Errors during Initialization */
+  //opstået errors der bliver håndteret under initiering
  err_cleanup_class:
   class_destroy(spi_drv_class);
 
@@ -115,7 +111,6 @@ ssize_t spiDriver_read(struct file *filep, char __user *ubuf, size_t count, loff
   u8 result;
   minor = iminor(filep->f_inode);
 
-  //Provide a result to write to user space
   struct spi_transfer t[1];
   struct spi_message m;
 
@@ -123,41 +118,31 @@ ssize_t spiDriver_read(struct file *filep, char __user *ubuf, size_t count, loff
   spi_message_init(&m);
   m.spi = spi_devs[0].spi;
 
-  //Configure tx/rx buffers
+  //Konfigurerer tx og rx buffers
   t[0].tx_buf = NULL;
   t[0].rx_buf = &result;
   t[0].len = 1;
   t[0].delay_usecs = 60;
   spi_message_add_tail(&t[0], &m);
 
-  /*t[0].tx_buf = NULL;
-  //result = *((int *)t[0].rx_buf);
-  t[0].rx_buf = result;
-  t[0].len = 1;
-  spi_message_add_tail(&t[0], &m);*/
-
   int err = spi_sync(m.spi,&m);
   if(err < 0){
     printk("SPI sync error");
   }
 
-  if(MODULE_DEBUG)
-    printk(KERN_ALERT "%s-%i read: %i\n",
-           spi_devs[minor].spi->modalias, spi_devs[minor].channel, result);
+  if(MODULE_DEBUG) {
+    printk(KERN_ALERT "%s-%i read: %i\n", spi_devs[minor].spi->modalias, spi_devs[minor].channel, result);
+  }
 
-  /* Convert integer to string limited to "count" size. Returns
-   * length excluding NULL termination */
-  len = snprintf(resultBuf, count, "%d\n", result);
-
-  /* Append Length of NULL termination */
+  len = snprintf(resultBuf, count, "%d\n", result); //Konverterer integer til string, som max er count len
+  //Returns length excluding NULL termination
   len++;
 
-  /* Copy data to user space */
-  if(copy_to_user(ubuf, resultBuf, len))
+  if(copy_to_user(ubuf, resultBuf, len)) { //kopierer til user space
     return -EFAULT;
+  }
 
-  /* Move fileptr */
-  *f_pos += len;
+  *f_pos += len; // flytter fileptr
 
   return len;
 }
@@ -171,21 +156,21 @@ ssize_t spiDriver_write(struct file *filep, const char __user *ubuf, size_t coun
 
   printk(KERN_ALERT "Writing to spi_drv [Minor] %i \n", minor);
 
-  /* Limit copy length to MAXLEN allocated andCopy from user */
-  len = count < MAXLEN ? count : MAXLEN;
-  if(copy_from_user(kbuf, ubuf, len))
-    return -EFAULT;
+  len = count < MAXLEN ? count : MAXLEN; //len kan ikke være længere end MAXLEN
+  if(copy_from_user(kbuf, ubuf, len)){
+      return -EFAULT;
+  }
 
-  /* Pad null termination to string */
-  kbuf[len] = '\0';
+  kbuf[len] = '\0'; //Pad null termination to string
 
   if(MODULE_DEBUG)
     printk("string from user: %s\n", kbuf);
 
-  /* Convert sting to int */
-  sscanf(kbuf,"%i", &value);
-  if(MODULE_DEBUG)
-    printk("value %i\n", value);
+
+  sscanf(kbuf,"%i", &value);//Konvereter string til integer
+  if(MODULE_DEBUG) {
+      printk("value %i\n", value);
+  }
 
   struct spi_transfer t[2];
   struct spi_message m;
@@ -201,65 +186,53 @@ ssize_t spiDriver_write(struct file *filep, const char __user *ubuf, size_t coun
 
   int err = spi_sync(m.spi,&m);
   if(err < 0){
-  printk("SPI sync error");
-}
+    printk("SPI sync error");
+  }
 
-  /* Legacy file ptr f_pos. Used to support
- * random access but in char drv we dont!
- * Move it the length actually  written
- * for compability */
- *f_pos += len;
+  *f_pos += len;//Legacy file ptr f_pos. Used to support random access but in char drv we dont!
+  //Move it the length actually  written for compability
 
- /* return length actually written */
-  return len;
+  return len;  //returnerer længden
 }
 //probe() funktion ===================================================
 static int spiDriver_probe (struct spi_device *sdev){
+  int currentSpiDevices = 0; // nuværende antal devices
+  const int maxSpiDevices = 4;  // Maksimal antal devices
   int err = 0;
   struct device *spi_drv_device;
 
   printk(KERN_DEBUG "New SPI device: %s using chip select: %i\n", sdev->modalias, sdev->chip_select);
 
-  /* Check we are not creating more
-   devices than we have space for */
-  if (spi_devs_cnt > spi_devs_len) {
+  if (currentSpiDevices > maxSpiDevices) { //tjekker at vi ikke opretter for mange devices
     printk(KERN_ERR "Too many SPI devices for driver\n");
     return -ENODEV;
   }
 
-  /* Configure bits_per_word, always 8-bit for RPI!!! */
-  sdev->bits_per_word = 8;
+  sdev->bits_per_word = 8; //konfigurerer bits, som er 8-bit for Rpi
   spi_setup(sdev);
 
-  //Added
-  //spi = sdev;
-
-  /* Create devices, populate sysfs and
-   active udev to create devices in /dev */
-
-  /* We map spi_devs index to minor number here */
-  spi_drv_device = device_create(spi_drv_class, NULL, MKDEV(MAJOR(devno), spi_devs_cnt), NULL, "spi_drv%d", spi_devs_cnt);
+  //Laver devices og tilskriver dem dynamisk major/minor nummer. Devices kan ses i /dev
+  spi_drv_device = device_create(spi_drv_class, NULL, MKDEV(MAJOR(devno), currentSpiDevices), NULL, "spi_drv%d", currentSpiDevices);
 
   if (IS_ERR(spi_drv_device)){
     printk(KERN_ALERT "FAILED TO CREATE DEVICE\n");
   }
 
   else {
-  printk(KERN_ALERT "Using spi_devs%i on major:%i, minor:%i\n", spi_devs_cnt, MAJOR(devno), spi_devs_cnt);
-}
+    printk(KERN_ALERT "Using spi_devs%i on major:%i, minor:%i\n", currentSpiDevices, MAJOR(devno), currentSpiDevices);
+  }
 
-/* Update local array of SPI devices */
-spi_devs[spi_devs_cnt].spi = sdev;
-spi_devs[spi_devs_cnt].channel = 0x00; // channel address
-++spi_devs_cnt;
+  //Updaterer loaklt array af SPI devices
+  spi_devs[currentSpiDevices].spi = sdev;
+  spi_devs[currentSpiDevices].channel = 0x00; // channel address
+  ++currentSpiDevices;
 
-return err;
+  return err;
 }
 ////remove() function ================================================
 static int spiDriver_remove(struct spi_device *sdev){
   int its_minor = 0;
-  /* Destroy devices created in probe() */
-  device_destroy(spi_drv_class, MKDEV(MAJOR(devno), its_minor));
+  device_destroy(spi_drv_class, MKDEV(MAJOR(devno), its_minor)); //nedlægger alle devices lavet i probe
   printk(KERN_ALERT"All devices has been removed\n");
   return 0;
 }
