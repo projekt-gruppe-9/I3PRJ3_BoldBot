@@ -1,5 +1,5 @@
 -- Project:   Steppermotor_bipolar
--- Generated: 05/03/2019 12:06:39
+-- Generated: 05/08/2019 14:00:41
 -- PSoC Creator  4.2
 
 ENTITY Steppermotor_bipolar IS
@@ -36,9 +36,7 @@ ARCHITECTURE __DEFAULT__ OF Steppermotor_bipolar IS
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
     SIGNAL Net_119 : bit;
-    SIGNAL Net_138 : bit;
-    SIGNAL Net_143_0 : bit;
-    SIGNAL Net_143_1 : bit;
+    SIGNAL Net_143 : bit;
     SIGNAL Net_144 : bit;
     SIGNAL Net_146 : bit;
     SIGNAL Net_186_0 : bit;
@@ -65,7 +63,9 @@ ARCHITECTURE __DEFAULT__ OF Steppermotor_bipolar IS
     SIGNAL Net_313 : bit;
     ATTRIBUTE soft OF Net_313 : SIGNAL IS 1;
     SIGNAL Net_313_split : bit;
-    SIGNAL Net_51 : bit;
+    SIGNAL Net_338 : bit;
+    SIGNAL Net_343 : bit;
+    SIGNAL Net_404_0 : bit;
     SIGNAL \Stepper_control:control_2\ : bit;
     SIGNAL \Stepper_control:control_3\ : bit;
     SIGNAL \Stepper_control:control_4\ : bit;
@@ -89,12 +89,12 @@ ARCHITECTURE __DEFAULT__ OF Steppermotor_bipolar IS
     ATTRIBUTE Location OF A_inv(0) : LABEL IS "P2[1]";
     ATTRIBUTE lib_model OF A(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF A(0) : LABEL IS "P2[0]";
-    ATTRIBUTE lib_model OF Net_143_1 : LABEL IS "macrocell2";
-    ATTRIBUTE lib_model OF Net_143_0 : LABEL IS "macrocell3";
-    ATTRIBUTE lib_model OF Net_144 : LABEL IS "macrocell4";
-    ATTRIBUTE lib_model OF Net_146 : LABEL IS "macrocell5";
-    ATTRIBUTE lib_model OF Net_138 : LABEL IS "macrocell6";
-    ATTRIBUTE lib_model OF Net_313 : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF Net_404_0 : LABEL IS "macrocell2";
+    ATTRIBUTE lib_model OF Net_313 : LABEL IS "macrocell3";
+    ATTRIBUTE lib_model OF Net_338 : LABEL IS "macrocell4";
+    ATTRIBUTE lib_model OF Net_144 : LABEL IS "macrocell5";
+    ATTRIBUTE lib_model OF Net_143 : LABEL IS "macrocell6";
+    ATTRIBUTE lib_model OF Net_146 : LABEL IS "macrocell7";
     ATTRIBUTE lib_model OF \Steps:Sync:ctrl_reg\ : LABEL IS "controlcell1";
     ATTRIBUTE lib_model OF \Stepper_control:Sync:ctrl_reg\ : LABEL IS "controlcell2";
     ATTRIBUTE lib_model OF Net_20_1 : LABEL IS "macrocell8";
@@ -501,7 +501,7 @@ BEGIN
         PORT MAP(
             pa_out => B(0)__PA,
             oe => open,
-            pin_input => Net_143_0,
+            pin_input => Net_143,
             pad_out => B(0)_PAD,
             pad_in => B(0)_PAD,
             in_clock => open,
@@ -685,7 +685,7 @@ BEGIN
         PORT MAP(
             pa_out => A(0)__PA,
             oe => open,
-            pin_input => Net_143_1,
+            pin_input => Net_404_0,
             pad_out => A(0)_PAD,
             pad_in => A(0)_PAD,
             in_clock => open,
@@ -695,53 +695,13 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Net_143_1:macrocell
+    Net_404_0:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1) + (main_0 * main_1)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            q => Net_143_1,
-            main_0 => Net_20_1,
-            main_1 => Net_119);
-
-    Net_143_0:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1) + (main_0 * main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_143_0,
-            main_0 => Net_20_1,
-            main_1 => Net_20_0);
-
-    Net_144:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * main_1) + (main_0 * !main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_144,
-            main_0 => Net_20_1,
-            main_1 => Net_119);
-
-    Net_146:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * main_1) + (main_0 * !main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_146,
-            main_0 => Net_20_1,
-            main_1 => Net_20_0);
-
-    Net_138:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_138,
+            q => Net_404_0,
             main_0 => Net_20_1,
             main_1 => Net_20_0);
 
@@ -758,6 +718,51 @@ BEGIN
             main_2 => Net_276,
             main_3 => Net_278,
             main_4 => Net_313_split);
+
+    Net_338:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1 * !main_2) + (main_2 * main_3)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_338,
+            main_0 => Net_20_1,
+            main_1 => Net_20_0,
+            main_2 => Net_343,
+            main_3 => ClockBlock_BUS_CLK_local);
+
+    Net_144:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * main_2) + (main_0 * main_1 * !main_2)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_144,
+            main_0 => Net_20_1,
+            main_1 => Net_313,
+            main_2 => Net_20_0);
+
+    Net_143:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * !main_2) + (main_0 * main_1 * main_2)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_143,
+            main_0 => Net_20_1,
+            main_1 => Net_313,
+            main_2 => Net_119);
+
+    Net_146:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * main_2) + (main_0 * main_1 * !main_2)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_146,
+            main_0 => Net_20_1,
+            main_1 => Net_313,
+            main_2 => Net_119);
 
     \Steps:Sync:ctrl_reg\:controlcell
         GENERIC MAP(
@@ -794,7 +799,7 @@ BEGIN
             control_3 => \Stepper_control:control_3\,
             control_2 => \Stepper_control:control_2\,
             control_1 => Net_119,
-            control_0 => Net_51,
+            control_0 => Net_343,
             busclk => ClockBlock_BUS_CLK);
 
     Net_20_1:macrocell
@@ -828,15 +833,14 @@ BEGIN
             eqn_main => "(main_0 * !main_2 * main_3 * main_4 * main_5 * main_6 * main_7 * main_8 * main_9) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_7,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
             main_1 => Net_186_7,
-            main_2 => Net_51,
+            main_2 => Net_343,
             main_3 => Net_186_6,
             main_4 => Net_186_5,
             main_5 => Net_186_4,
@@ -850,14 +854,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4 * main_5 * main_6 * main_7 * main_8) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_6,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_6,
             main_3 => Net_186_5,
             main_4 => Net_186_4,
@@ -871,14 +874,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4 * main_5 * main_6 * main_7) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_5,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_5,
             main_3 => Net_186_4,
             main_4 => Net_186_3,
@@ -891,14 +893,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4 * main_5 * main_6) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_4,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_4,
             main_3 => Net_186_3,
             main_4 => Net_186_2,
@@ -910,14 +911,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4 * main_5) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_3,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_3,
             main_3 => Net_186_2,
             main_4 => Net_186_1,
@@ -928,14 +928,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_2,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_2,
             main_3 => Net_186_1,
             main_4 => Net_186_0);
@@ -945,14 +944,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_1,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_1,
             main_3 => Net_186_0);
 
@@ -961,14 +959,13 @@ BEGIN
             eqn_main => "(!main_0 * !main_1 * main_2) + (main_0 * !main_1 * !main_2)",
             regmode => 1,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_0,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_0);
 
 END __DEFAULT__;

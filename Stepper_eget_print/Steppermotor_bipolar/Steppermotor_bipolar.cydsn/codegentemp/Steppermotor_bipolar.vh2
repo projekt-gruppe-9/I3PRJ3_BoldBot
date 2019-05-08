@@ -2,7 +2,7 @@
 --	Conversion of Steppermotor_bipolar.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri May 03 12:06:38 2019
+--	Wed May 08 14:00:40 2019
 --
 
 USE cypress.cypress.all;
@@ -14,7 +14,7 @@ END top_RTL;
 ARCHITECTURE R_T_L OF top_RTL IS
 SIGNAL Net_289 : bit;
 SIGNAL Net_20_1 : bit;
-SIGNAL Net_138 : bit;
+SIGNAL Net_328 : bit;
 SIGNAL Net_313 : bit;
 ATTRIBUTE soft of Net_313:SIGNAL IS '1';
 SIGNAL \Stepper_sequence_counter:add_vi_vv_MODGEN_1_1\ : bit;
@@ -232,8 +232,9 @@ SIGNAL \Reverse_table:tmp__Reverse_table_reg_0\ : bit;
 SIGNAL Net_132 : bit;
 SIGNAL Net_130_1 : bit;
 SIGNAL Net_130_0 : bit;
+SIGNAL Net_338 : bit;
 SIGNAL Net_186_7 : bit;
-SIGNAL Net_51 : bit;
+SIGNAL Net_343 : bit;
 SIGNAL \Stepper_steps_counter:add_vi_vv_MODGEN_2_7\ : bit;
 SIGNAL Net_186_6 : bit;
 SIGNAL \Stepper_steps_counter:add_vi_vv_MODGEN_2_6\ : bit;
@@ -448,9 +449,9 @@ SIGNAL \Stepper_steps_counter:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
 SIGNAL \mux_1:tmp__mux_1_reg_1\ : bit;
 SIGNAL Net_119 : bit;
 SIGNAL \mux_1:tmp__mux_1_reg_0\ : bit;
-SIGNAL Net_143_1 : bit;
-SIGNAL Net_143_0 : bit;
-SIGNAL Net_144 : bit;
+SIGNAL Net_404_1 : bit;
+SIGNAL Net_404_0 : bit;
+SIGNAL Net_392 : bit;
 SIGNAL Net_198 : bit;
 SIGNAL Net_265 : bit;
 SIGNAL tmpOE__B_inv_net_0 : bit;
@@ -462,11 +463,13 @@ SIGNAL zero : bit;
 SIGNAL one : bit;
 SIGNAL tmpINTERRUPT_0__B_inv_net_0 : bit;
 SIGNAL tmpOE__B_net_0 : bit;
+SIGNAL Net_143 : bit;
 SIGNAL tmpFB_0__B_net_0 : bit;
 SIGNAL tmpIO_0__B_net_0 : bit;
 TERMINAL tmpSIOVREF__B_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__B_net_0 : bit;
 SIGNAL tmpOE__A_inv_net_0 : bit;
+SIGNAL Net_144 : bit;
 SIGNAL tmpFB_0__A_inv_net_0 : bit;
 SIGNAL tmpIO_0__A_inv_net_0 : bit;
 TERMINAL tmpSIOVREF__A_inv_net_0 : bit;
@@ -476,6 +479,7 @@ SIGNAL tmpFB_0__A_net_0 : bit;
 SIGNAL tmpIO_0__A_net_0 : bit;
 TERMINAL tmpSIOVREF__A_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__A_net_0 : bit;
+SIGNAL Net_397 : bit;
 SIGNAL \mux_2:tmp__mux_2_reg\ : bit;
 SIGNAL Net_267 : bit;
 SIGNAL Net_264 : bit;
@@ -549,6 +553,10 @@ SIGNAL \Stepper_control:control_3\ : bit;
 SIGNAL \Stepper_control:control_2\ : bit;
 SIGNAL \Stepper_control:control_1\ : bit;
 SIGNAL \Stepper_control:control_0\ : bit;
+SIGNAL Net_345 : bit;
+SIGNAL Net_385 : bit;
+SIGNAL Net_347 : bit;
+SIGNAL Net_349 : bit;
 SIGNAL Net_20_1D : bit;
 SIGNAL Net_20_0D : bit;
 SIGNAL Net_186_7D : bit;
@@ -567,77 +575,66 @@ Net_20_1D <= ((not Net_20_1 and Net_313 and Net_20_0)
 Net_20_0D <= ((not Net_20_1 and not Net_313 and Net_20_0)
 	OR (not Net_20_0 and Net_313));
 
-Net_186_7D <= ((not Net_186_7 and not Net_51 and Net_313 and Net_186_6 and Net_186_5 and Net_186_4 and Net_186_3 and Net_186_2 and Net_186_1 and Net_186_0)
-	OR (not Net_51 and not Net_186_0 and Net_186_7)
-	OR (not Net_51 and not Net_186_1 and Net_186_7)
-	OR (not Net_51 and not Net_186_2 and Net_186_7)
-	OR (not Net_51 and not Net_186_3 and Net_186_7)
-	OR (not Net_51 and not Net_186_4 and Net_186_7)
-	OR (not Net_51 and not Net_186_5 and Net_186_7)
-	OR (not Net_51 and not Net_186_6 and Net_186_7)
-	OR (not Net_313 and not Net_51 and Net_186_7));
+Net_186_7D <= ((not Net_186_7 and not Net_343 and Net_313 and Net_186_6 and Net_186_5 and Net_186_4 and Net_186_3 and Net_186_2 and Net_186_1 and Net_186_0)
+	OR (not Net_343 and not Net_186_0 and Net_186_7)
+	OR (not Net_343 and not Net_186_1 and Net_186_7)
+	OR (not Net_343 and not Net_186_2 and Net_186_7)
+	OR (not Net_343 and not Net_186_3 and Net_186_7)
+	OR (not Net_343 and not Net_186_4 and Net_186_7)
+	OR (not Net_343 and not Net_186_5 and Net_186_7)
+	OR (not Net_343 and not Net_186_6 and Net_186_7)
+	OR (not Net_313 and not Net_343 and Net_186_7));
 
-Net_186_6D <= ((not Net_51 and not Net_186_6 and Net_313 and Net_186_5 and Net_186_4 and Net_186_3 and Net_186_2 and Net_186_1 and Net_186_0)
-	OR (not Net_51 and not Net_186_0 and Net_186_6)
-	OR (not Net_51 and not Net_186_1 and Net_186_6)
-	OR (not Net_51 and not Net_186_2 and Net_186_6)
-	OR (not Net_51 and not Net_186_3 and Net_186_6)
-	OR (not Net_51 and not Net_186_4 and Net_186_6)
-	OR (not Net_51 and not Net_186_5 and Net_186_6)
-	OR (not Net_313 and not Net_51 and Net_186_6));
+Net_186_6D <= ((not Net_343 and not Net_186_6 and Net_313 and Net_186_5 and Net_186_4 and Net_186_3 and Net_186_2 and Net_186_1 and Net_186_0)
+	OR (not Net_343 and not Net_186_0 and Net_186_6)
+	OR (not Net_343 and not Net_186_1 and Net_186_6)
+	OR (not Net_343 and not Net_186_2 and Net_186_6)
+	OR (not Net_343 and not Net_186_3 and Net_186_6)
+	OR (not Net_343 and not Net_186_4 and Net_186_6)
+	OR (not Net_343 and not Net_186_5 and Net_186_6)
+	OR (not Net_313 and not Net_343 and Net_186_6));
 
-Net_186_5D <= ((not Net_51 and not Net_186_5 and Net_313 and Net_186_4 and Net_186_3 and Net_186_2 and Net_186_1 and Net_186_0)
-	OR (not Net_51 and not Net_186_0 and Net_186_5)
-	OR (not Net_51 and not Net_186_1 and Net_186_5)
-	OR (not Net_51 and not Net_186_2 and Net_186_5)
-	OR (not Net_51 and not Net_186_3 and Net_186_5)
-	OR (not Net_51 and not Net_186_4 and Net_186_5)
-	OR (not Net_313 and not Net_51 and Net_186_5));
+Net_186_5D <= ((not Net_343 and not Net_186_5 and Net_313 and Net_186_4 and Net_186_3 and Net_186_2 and Net_186_1 and Net_186_0)
+	OR (not Net_343 and not Net_186_0 and Net_186_5)
+	OR (not Net_343 and not Net_186_1 and Net_186_5)
+	OR (not Net_343 and not Net_186_2 and Net_186_5)
+	OR (not Net_343 and not Net_186_3 and Net_186_5)
+	OR (not Net_343 and not Net_186_4 and Net_186_5)
+	OR (not Net_313 and not Net_343 and Net_186_5));
 
-Net_186_4D <= ((not Net_51 and not Net_186_4 and Net_313 and Net_186_3 and Net_186_2 and Net_186_1 and Net_186_0)
-	OR (not Net_51 and not Net_186_0 and Net_186_4)
-	OR (not Net_51 and not Net_186_1 and Net_186_4)
-	OR (not Net_51 and not Net_186_2 and Net_186_4)
-	OR (not Net_51 and not Net_186_3 and Net_186_4)
-	OR (not Net_313 and not Net_51 and Net_186_4));
+Net_186_4D <= ((not Net_343 and not Net_186_4 and Net_313 and Net_186_3 and Net_186_2 and Net_186_1 and Net_186_0)
+	OR (not Net_343 and not Net_186_0 and Net_186_4)
+	OR (not Net_343 and not Net_186_1 and Net_186_4)
+	OR (not Net_343 and not Net_186_2 and Net_186_4)
+	OR (not Net_343 and not Net_186_3 and Net_186_4)
+	OR (not Net_313 and not Net_343 and Net_186_4));
 
-Net_186_3D <= ((not Net_51 and not Net_186_3 and Net_313 and Net_186_2 and Net_186_1 and Net_186_0)
-	OR (not Net_51 and not Net_186_0 and Net_186_3)
-	OR (not Net_51 and not Net_186_1 and Net_186_3)
-	OR (not Net_51 and not Net_186_2 and Net_186_3)
-	OR (not Net_313 and not Net_51 and Net_186_3));
+Net_186_3D <= ((not Net_343 and not Net_186_3 and Net_313 and Net_186_2 and Net_186_1 and Net_186_0)
+	OR (not Net_343 and not Net_186_0 and Net_186_3)
+	OR (not Net_343 and not Net_186_1 and Net_186_3)
+	OR (not Net_343 and not Net_186_2 and Net_186_3)
+	OR (not Net_313 and not Net_343 and Net_186_3));
 
-Net_186_2D <= ((not Net_51 and not Net_186_2 and Net_313 and Net_186_1 and Net_186_0)
-	OR (not Net_51 and not Net_186_0 and Net_186_2)
-	OR (not Net_51 and not Net_186_1 and Net_186_2)
-	OR (not Net_313 and not Net_51 and Net_186_2));
+Net_186_2D <= ((not Net_343 and not Net_186_2 and Net_313 and Net_186_1 and Net_186_0)
+	OR (not Net_343 and not Net_186_0 and Net_186_2)
+	OR (not Net_343 and not Net_186_1 and Net_186_2)
+	OR (not Net_313 and not Net_343 and Net_186_2));
 
-Net_186_1D <= ((not Net_51 and not Net_186_1 and Net_313 and Net_186_0)
-	OR (not Net_51 and not Net_186_0 and Net_186_1)
-	OR (not Net_313 and not Net_51 and Net_186_1));
+Net_186_1D <= ((not Net_343 and not Net_186_1 and Net_313 and Net_186_0)
+	OR (not Net_343 and not Net_186_0 and Net_186_1)
+	OR (not Net_313 and not Net_343 and Net_186_1));
 
-Net_186_0D <= ((not Net_51 and not Net_186_0 and Net_313)
-	OR (not Net_313 and not Net_51 and Net_186_0));
+Net_186_0D <= ((not Net_343 and not Net_186_0 and Net_313)
+	OR (not Net_313 and not Net_343 and Net_186_0));
 
 \Stepper_steps_counter:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_8\ <= ((Net_186_7 and Net_186_6 and Net_186_5 and Net_186_4 and Net_186_3 and Net_186_2 and Net_186_1 and Net_186_0));
 
-Net_143_1 <= ((not Net_20_1 and not Net_119)
-	OR (Net_20_1 and Net_119));
-
-Net_143_0 <= ((not Net_20_1 and not Net_20_0)
+Net_404_0 <= ((not Net_20_1 and not Net_20_0)
 	OR (Net_20_1 and Net_20_0));
-
-Net_144 <= ((not Net_119 and Net_20_1)
-	OR (not Net_20_1 and Net_119));
 
 zero <=  ('0') ;
 
 tmpOE__B_inv_net_0 <=  ('1') ;
-
-Net_146 <= ((not Net_20_0 and Net_20_1)
-	OR (not Net_20_1 and Net_20_0));
-
-Net_138 <= ((Net_20_1 and Net_20_0));
 
 Net_313 <= ((not Net_186_7 and Net_278)
 	OR (not Net_186_6 and Net_276)
@@ -648,12 +645,24 @@ Net_313 <= ((not Net_186_7 and Net_278)
 	OR (not Net_186_1 and Net_264)
 	OR (not Net_186_0 and Net_265));
 
+Net_338 <= ((not Net_343 and Net_20_1 and Net_20_0)
+	OR (Net_343 and Net_385));
+
+Net_144 <= ((not Net_20_0 and Net_20_1 and Net_313)
+	OR (not Net_20_1 and Net_313 and Net_20_0));
+
+Net_143 <= ((not Net_20_1 and not Net_119 and Net_313)
+	OR (Net_20_1 and Net_313 and Net_119));
+
+Net_146 <= ((not Net_119 and Net_20_1 and Net_313)
+	OR (not Net_20_1 and Net_313 and Net_119));
+
 Clock_1:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"896838d8-443c-4309-bc01-8e781235b7bc",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"100000000000000",
+		period=>"10000000000000",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_289,
@@ -803,7 +812,7 @@ B:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__B_inv_net_0),
-		y=>Net_143_0,
+		y=>Net_143,
 		fb=>(tmpFB_0__B_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__B_net_0),
@@ -943,7 +952,7 @@ A:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__B_inv_net_0),
-		y=>Net_143_1,
+		y=>Net_404_0,
 		fb=>(tmpFB_0__A_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__A_net_0),
@@ -975,7 +984,17 @@ A:cy_psoc3_pins_v1_10
 	PORT MAP(reset=>zero,
 		clock=>zero,
 		control=>(\Stepper_control:control_7\, \Stepper_control:control_6\, \Stepper_control:control_5\, \Stepper_control:control_4\,
-			\Stepper_control:control_3\, \Stepper_control:control_2\, Net_119, Net_51));
+			\Stepper_control:control_3\, \Stepper_control:control_2\, Net_119, Net_343));
+Clock_2:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"f74de082-df93-4b29-8d5f-946644cd1201",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_385,
+		dig_domain_out=>open);
 Net_20_1:cy_dff
 	PORT MAP(d=>Net_20_1D,
 		clk=>Net_289,
@@ -986,35 +1005,35 @@ Net_20_0:cy_dff
 		q=>Net_20_0);
 Net_186_7:cy_dff
 	PORT MAP(d=>Net_186_7D,
-		clk=>Net_138,
+		clk=>Net_338,
 		q=>Net_186_7);
 Net_186_6:cy_dff
 	PORT MAP(d=>Net_186_6D,
-		clk=>Net_138,
+		clk=>Net_338,
 		q=>Net_186_6);
 Net_186_5:cy_dff
 	PORT MAP(d=>Net_186_5D,
-		clk=>Net_138,
+		clk=>Net_338,
 		q=>Net_186_5);
 Net_186_4:cy_dff
 	PORT MAP(d=>Net_186_4D,
-		clk=>Net_138,
+		clk=>Net_338,
 		q=>Net_186_4);
 Net_186_3:cy_dff
 	PORT MAP(d=>Net_186_3D,
-		clk=>Net_138,
+		clk=>Net_338,
 		q=>Net_186_3);
 Net_186_2:cy_dff
 	PORT MAP(d=>Net_186_2D,
-		clk=>Net_138,
+		clk=>Net_338,
 		q=>Net_186_2);
 Net_186_1:cy_dff
 	PORT MAP(d=>Net_186_1D,
-		clk=>Net_138,
+		clk=>Net_338,
 		q=>Net_186_1);
 Net_186_0:cy_dff
 	PORT MAP(d=>Net_186_0D,
-		clk=>Net_138,
+		clk=>Net_338,
 		q=>Net_186_0);
 
 END R_T_L;

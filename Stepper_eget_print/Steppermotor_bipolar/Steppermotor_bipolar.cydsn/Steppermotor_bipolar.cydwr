@@ -254,6 +254,7 @@
       <Data key="606d0192-5736-43d0-a32a-2fefabc39126" value="B" />
       <Data key="77974d2d-0e98-4aea-8d34-edc2b3538783" value="LED" />
       <Data key="b7da1fda-97ab-4395-b606-99d9abbe81a7" value="B_inv" />
+      <Data key="b8952f6d-a855-4e62-843a-361457f588a1" value="Pin_1" />
       <Data key="bd1c7e50-222b-4693-b95c-27fd6362aa89" value="A_inv" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="A" />
     </Group>
@@ -3355,6 +3356,11 @@
     <Group key="b7da1fda-97ab-4395-b606-99d9abbe81a7">
       <Group key="0">
         <Data key="Port Format" value="2,3" />
+      </Group>
+    </Group>
+    <Group key="b8952f6d-a855-4e62-843a-361457f588a1">
+      <Group key="0">
+        <Data key="Port Format" value="2,1" />
       </Group>
     </Group>
     <Group key="bd1c7e50-222b-4693-b95c-27fd6362aa89">

@@ -1,6 +1,6 @@
 // ======================================================================
 // Steppermotor_bipolar.v generated from TopDesign.cysch
-// 05/03/2019 at 12:06
+// 05/08/2019 at 14:00
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -239,6 +239,8 @@
 // top
 module top ;
 
+          wire  Net_384;
+          wire  Net_347;
           wire  Net_312;
           wire  Net_311;
           wire  Net_310;
@@ -268,8 +270,17 @@ module top ;
           wire  Net_24;
           wire  Net_23;
           wire  Net_293;
-          wire  Net_51;
+          wire  Net_146;
+          wire  Net_143;
+          wire  Net_144;
+          wire  Net_392;
+          wire  Net_397;
+          wire  Net_385;
           wire  Net_289;
+          wire  Net_338;
+          wire  Net_349;
+          wire  Net_345;
+          wire  Net_343;
           wire  Net_313;
           wire  Net_288;
           wire  Net_287;
@@ -304,15 +315,13 @@ module top ;
           wire  Net_265;
           wire [7:0] Net_186;
           wire  Net_275;
-          wire  Net_146;
-          wire [1:0] Net_143;
-          wire  Net_144;
+          wire [1:0] Net_404;
+          wire  Net_328;
           wire  Net_119;
           wire  Net_132;
           wire  Net_131;
           wire [1:0] Net_130;
           wire [1:0] Net_126;
-          wire  Net_138;
           wire [1:0] Net_20;
 
 
@@ -320,7 +329,7 @@ module top ;
 		#(.id("896838d8-443c-4309-bc01-8e781235b7bc"),
 		  .source_clock_id(""),
 		  .divisor(0),
-		  .period("100000000000000"),
+		  .period("10000000000000"),
 		  .is_direct(0),
 		  .is_digital(1))
 		Clock_1
@@ -330,7 +339,7 @@ module top ;
     BasicCounter_v1_0 Stepper_sequence_counter (
         .en(Net_313),
         .cnt(Net_20[1:0]),
-        .reset(Net_138),
+        .reset(Net_328),
         .clock(Net_289));
     defparam Stepper_sequence_counter.Width = 2;
 
@@ -375,8 +384,8 @@ module top ;
     BasicCounter_v1_0 Stepper_steps_counter (
         .en(Net_313),
         .cnt(Net_186[7:0]),
-        .reset(Net_51),
-        .clock(Net_138));
+        .reset(Net_343),
+        .clock(Net_338));
     defparam Stepper_steps_counter.Width = 8;
 
     // -- Mux start --
@@ -390,12 +399,12 @@ module top ;
                 1'b1 :  tmp__mux_1_reg = Net_130[1:0];
             endcase
         end
-        assign Net_143[1:0] = tmp__mux_1_reg;
+        assign Net_404[1:0] = tmp__mux_1_reg;
     end
     // -- Mux end --
 
 
-    assign Net_144 = ~Net_143[1];
+    assign Net_392 = ~Net_404[0];
 
 
     assign Net_198 = Net_186[0] & Net_265;
@@ -536,7 +545,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		B
 		 (.oe(tmpOE__B_net),
-		  .y({Net_143[0]}),
+		  .y({Net_143}),
 		  .fb({tmpFB_0__B_net[0:0]}),
 		  .io({tmpIO_0__B_net[0:0]}),
 		  .siovref(tmpSIOVREF__B_net),
@@ -686,7 +695,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		A
 		 (.oe(tmpOE__A_net),
-		  .y({Net_143[1]}),
+		  .y({Net_404[0]}),
 		  .fb({tmpFB_0__A_net[0:0]}),
 		  .io({tmpIO_0__A_net[0:0]}),
 		  .siovref(tmpSIOVREF__A_net),
@@ -701,7 +710,7 @@ module top ;
 	assign tmpOE__A_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
-    assign Net_146 = ~Net_143[0];
+    assign Net_397 = ~Net_404[1];
 
     // -- Mux start --
     if (1)
@@ -714,7 +723,7 @@ module top ;
                 1'b1 :  tmp__mux_2_reg = Net_132;
             endcase
         end
-        assign Net_138 = tmp__mux_2_reg;
+        assign Net_328 = tmp__mux_2_reg;
     end
     // -- Mux end --
 
@@ -818,7 +827,7 @@ module top ;
         .control_1(Net_119),
         .control_2(Net_304),
         .control_3(Net_305),
-        .control_0(Net_51),
+        .control_0(Net_343),
         .control_4(Net_307),
         .control_5(Net_308),
         .control_6(Net_309),
@@ -837,6 +846,39 @@ module top ;
     defparam Stepper_control.BusDisplay = 0;
     defparam Stepper_control.ExtrReset = 0;
     defparam Stepper_control.NumOutputs = 2;
+
+
+    assign Net_345 = Net_343 & Net_385;
+
+
+    assign Net_347 = ~Net_343;
+
+
+    assign Net_349 = Net_347 & Net_328;
+
+
+    assign Net_338 = Net_345 | Net_349;
+
+
+	cy_clock_v1_0
+		#(.id("f74de082-df93-4b29-8d5f-946644cd1201"),
+		  .source_clock_id("75C2148C-3656-4d8a-846D-0CAE99AB6FF7"),
+		  .divisor(0),
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(1))
+		Clock_2
+		 (.clock_out(Net_385));
+
+
+
+    assign Net_144 = Net_313 & Net_392;
+
+
+    assign Net_143 = Net_313 & Net_404[1];
+
+
+    assign Net_146 = Net_397 & Net_313;
 
 
 

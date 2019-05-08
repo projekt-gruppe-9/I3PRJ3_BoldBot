@@ -1,5 +1,5 @@
 -- Project:   Steppermotor_bipolar
--- Generated: 05/03/2019 12:06:40
+-- Generated: 05/08/2019 14:00:42
 -- PSoC Creator  4.2
 
 ENTITY Steppermotor_bipolar IS
@@ -36,36 +36,32 @@ ARCHITECTURE __DEFAULT__ OF Steppermotor_bipolar IS
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
     SIGNAL Net_119 : bit;
-    SIGNAL Net_138 : bit;
-    ATTRIBUTE placement_force OF Net_138 : SIGNAL IS "U(0,5,B)2";
-    SIGNAL Net_143_0 : bit;
-    ATTRIBUTE placement_force OF Net_143_0 : SIGNAL IS "U(0,4,B)2";
-    SIGNAL Net_143_1 : bit;
-    ATTRIBUTE placement_force OF Net_143_1 : SIGNAL IS "U(1,4,B)2";
+    SIGNAL Net_143 : bit;
+    ATTRIBUTE placement_force OF Net_143 : SIGNAL IS "U(1,4,A)3";
     SIGNAL Net_144 : bit;
-    ATTRIBUTE placement_force OF Net_144 : SIGNAL IS "U(1,5,B)0";
+    ATTRIBUTE placement_force OF Net_144 : SIGNAL IS "U(0,4,A)3";
     SIGNAL Net_146 : bit;
-    ATTRIBUTE placement_force OF Net_146 : SIGNAL IS "U(1,4,A)0";
+    ATTRIBUTE placement_force OF Net_146 : SIGNAL IS "U(1,4,B)1";
     SIGNAL Net_186_0 : bit;
-    ATTRIBUTE placement_force OF Net_186_0 : SIGNAL IS "U(0,5,B)0";
+    ATTRIBUTE placement_force OF Net_186_0 : SIGNAL IS "U(1,5,A)2";
     SIGNAL Net_186_1 : bit;
-    ATTRIBUTE placement_force OF Net_186_1 : SIGNAL IS "U(0,4,B)1";
+    ATTRIBUTE placement_force OF Net_186_1 : SIGNAL IS "U(0,4,A)2";
     SIGNAL Net_186_2 : bit;
-    ATTRIBUTE placement_force OF Net_186_2 : SIGNAL IS "U(0,5,A)2";
+    ATTRIBUTE placement_force OF Net_186_2 : SIGNAL IS "U(0,4,B)3";
     SIGNAL Net_186_3 : bit;
-    ATTRIBUTE placement_force OF Net_186_3 : SIGNAL IS "U(0,4,B)3";
+    ATTRIBUTE placement_force OF Net_186_3 : SIGNAL IS "U(0,4,B)1";
     SIGNAL Net_186_4 : bit;
-    ATTRIBUTE placement_force OF Net_186_4 : SIGNAL IS "U(0,5,A)0";
+    ATTRIBUTE placement_force OF Net_186_4 : SIGNAL IS "U(1,4,A)1";
     SIGNAL Net_186_5 : bit;
-    ATTRIBUTE placement_force OF Net_186_5 : SIGNAL IS "U(0,4,B)0";
+    ATTRIBUTE placement_force OF Net_186_5 : SIGNAL IS "U(0,4,A)0";
     SIGNAL Net_186_6 : bit;
-    ATTRIBUTE placement_force OF Net_186_6 : SIGNAL IS "U(0,5,B)1";
+    ATTRIBUTE placement_force OF Net_186_6 : SIGNAL IS "U(1,5,A)1";
     SIGNAL Net_186_7 : bit;
-    ATTRIBUTE placement_force OF Net_186_7 : SIGNAL IS "U(0,5,B)3";
+    ATTRIBUTE placement_force OF Net_186_7 : SIGNAL IS "U(0,4,B)0";
     SIGNAL Net_20_0 : bit;
-    ATTRIBUTE placement_force OF Net_20_0 : SIGNAL IS "U(1,5,A)1";
+    ATTRIBUTE placement_force OF Net_20_0 : SIGNAL IS "U(0,5,B)1";
     SIGNAL Net_20_1 : bit;
-    ATTRIBUTE placement_force OF Net_20_1 : SIGNAL IS "U(1,5,A)0";
+    ATTRIBUTE placement_force OF Net_20_1 : SIGNAL IS "U(0,5,B)2";
     SIGNAL Net_264 : bit;
     SIGNAL Net_265 : bit;
     SIGNAL Net_268 : bit;
@@ -78,11 +74,15 @@ ARCHITECTURE __DEFAULT__ OF Steppermotor_bipolar IS
     ATTRIBUTE global_signal OF Net_289 : SIGNAL IS true;
     SIGNAL Net_289_local : bit;
     SIGNAL Net_313 : bit;
-    ATTRIBUTE placement_force OF Net_313 : SIGNAL IS "U(0,5,A)1";
+    ATTRIBUTE placement_force OF Net_313 : SIGNAL IS "U(0,5,B)0";
     ATTRIBUTE soft OF Net_313 : SIGNAL IS 1;
     SIGNAL Net_313_split : bit;
-    ATTRIBUTE placement_force OF Net_313_split : SIGNAL IS "U(0,4,A)0";
-    SIGNAL Net_51 : bit;
+    ATTRIBUTE placement_force OF Net_313_split : SIGNAL IS "U(0,5,A)0";
+    SIGNAL Net_338 : bit;
+    ATTRIBUTE placement_force OF Net_338 : SIGNAL IS "U(1,5,A)0";
+    SIGNAL Net_343 : bit;
+    SIGNAL Net_404_0 : bit;
+    ATTRIBUTE placement_force OF Net_404_0 : SIGNAL IS "U(1,4,B)2";
     SIGNAL \Stepper_control:control_2\ : bit;
     SIGNAL \Stepper_control:control_3\ : bit;
     SIGNAL \Stepper_control:control_4\ : bit;
@@ -98,7 +98,7 @@ ARCHITECTURE __DEFAULT__ OF Steppermotor_bipolar IS
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     ATTRIBUTE lib_model OF Net_313_split : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_313_split : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF Net_313_split : LABEL IS "U(0,5)";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF B_inv(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF B_inv(0) : LABEL IS "P2[3]";
@@ -108,42 +108,42 @@ ARCHITECTURE __DEFAULT__ OF Steppermotor_bipolar IS
     ATTRIBUTE Location OF A_inv(0) : LABEL IS "P2[1]";
     ATTRIBUTE lib_model OF A(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF A(0) : LABEL IS "P2[0]";
-    ATTRIBUTE lib_model OF Net_143_1 : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF Net_143_1 : LABEL IS "U(1,4)";
-    ATTRIBUTE lib_model OF Net_143_0 : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF Net_143_0 : LABEL IS "U(0,4)";
-    ATTRIBUTE lib_model OF Net_144 : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF Net_144 : LABEL IS "U(1,5)";
-    ATTRIBUTE lib_model OF Net_146 : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF Net_146 : LABEL IS "U(1,4)";
-    ATTRIBUTE lib_model OF Net_138 : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF Net_138 : LABEL IS "U(0,5)";
-    ATTRIBUTE lib_model OF Net_313 : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF Net_404_0 : LABEL IS "macrocell2";
+    ATTRIBUTE Location OF Net_404_0 : LABEL IS "U(1,4)";
+    ATTRIBUTE lib_model OF Net_313 : LABEL IS "macrocell3";
     ATTRIBUTE Location OF Net_313 : LABEL IS "U(0,5)";
+    ATTRIBUTE lib_model OF Net_338 : LABEL IS "macrocell4";
+    ATTRIBUTE Location OF Net_338 : LABEL IS "U(1,5)";
+    ATTRIBUTE lib_model OF Net_144 : LABEL IS "macrocell5";
+    ATTRIBUTE Location OF Net_144 : LABEL IS "U(0,4)";
+    ATTRIBUTE lib_model OF Net_143 : LABEL IS "macrocell6";
+    ATTRIBUTE Location OF Net_143 : LABEL IS "U(1,4)";
+    ATTRIBUTE lib_model OF Net_146 : LABEL IS "macrocell7";
+    ATTRIBUTE Location OF Net_146 : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \Steps:Sync:ctrl_reg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \Steps:Sync:ctrl_reg\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \Steps:Sync:ctrl_reg\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \Stepper_control:Sync:ctrl_reg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \Stepper_control:Sync:ctrl_reg\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \Stepper_control:Sync:ctrl_reg\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF Net_20_1 : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF Net_20_1 : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF Net_20_1 : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF Net_20_0 : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF Net_20_0 : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF Net_20_0 : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF Net_186_7 : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF Net_186_7 : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF Net_186_7 : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF Net_186_6 : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF Net_186_6 : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF Net_186_6 : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF Net_186_5 : LABEL IS "macrocell12";
     ATTRIBUTE Location OF Net_186_5 : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF Net_186_4 : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF Net_186_4 : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF Net_186_4 : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF Net_186_3 : LABEL IS "macrocell14";
     ATTRIBUTE Location OF Net_186_3 : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF Net_186_2 : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF Net_186_2 : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF Net_186_2 : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF Net_186_1 : LABEL IS "macrocell16";
     ATTRIBUTE Location OF Net_186_1 : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF Net_186_0 : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF Net_186_0 : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF Net_186_0 : LABEL IS "U(1,5)";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -528,7 +528,7 @@ BEGIN
         PORT MAP(
             pa_out => B(0)__PA,
             oe => open,
-            pin_input => Net_143_0,
+            pin_input => Net_143,
             pad_out => B(0)_PAD,
             pad_in => B(0)_PAD,
             in_clock => open,
@@ -712,7 +712,7 @@ BEGIN
         PORT MAP(
             pa_out => A(0)__PA,
             oe => open,
-            pin_input => Net_143_1,
+            pin_input => Net_404_0,
             pad_out => A(0)_PAD,
             pad_in => A(0)_PAD,
             in_clock => open,
@@ -722,53 +722,13 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Net_143_1:macrocell
+    Net_404_0:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1) + (main_0 * main_1)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
-            q => Net_143_1,
-            main_0 => Net_20_1,
-            main_1 => Net_119);
-
-    Net_143_0:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1) + (main_0 * main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_143_0,
-            main_0 => Net_20_1,
-            main_1 => Net_20_0);
-
-    Net_144:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * main_1) + (main_0 * !main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_144,
-            main_0 => Net_20_1,
-            main_1 => Net_119);
-
-    Net_146:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * main_1) + (main_0 * !main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_146,
-            main_0 => Net_20_1,
-            main_1 => Net_20_0);
-
-    Net_138:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_138,
+            q => Net_404_0,
             main_0 => Net_20_1,
             main_1 => Net_20_0);
 
@@ -785,6 +745,51 @@ BEGIN
             main_2 => Net_276,
             main_3 => Net_278,
             main_4 => Net_313_split);
+
+    Net_338:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1 * !main_2) + (main_2 * main_3)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_338,
+            main_0 => Net_20_1,
+            main_1 => Net_20_0,
+            main_2 => Net_343,
+            main_3 => ClockBlock_BUS_CLK_local);
+
+    Net_144:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * main_2) + (main_0 * main_1 * !main_2)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_144,
+            main_0 => Net_20_1,
+            main_1 => Net_313,
+            main_2 => Net_20_0);
+
+    Net_143:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * !main_2) + (main_0 * main_1 * main_2)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_143,
+            main_0 => Net_20_1,
+            main_1 => Net_313,
+            main_2 => Net_119);
+
+    Net_146:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1 * main_2) + (main_0 * main_1 * !main_2)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_146,
+            main_0 => Net_20_1,
+            main_1 => Net_313,
+            main_2 => Net_119);
 
     \Steps:Sync:ctrl_reg\:controlcell
         GENERIC MAP(
@@ -821,7 +826,7 @@ BEGIN
             control_3 => \Stepper_control:control_3\,
             control_2 => \Stepper_control:control_2\,
             control_1 => Net_119,
-            control_0 => Net_51,
+            control_0 => Net_343,
             busclk => ClockBlock_BUS_CLK);
 
     Net_20_1:macrocell
@@ -855,15 +860,14 @@ BEGIN
             eqn_main => "(main_0 * !main_2 * main_3 * main_4 * main_5 * main_6 * main_7 * main_8 * main_9) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_7,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
             main_1 => Net_186_7,
-            main_2 => Net_51,
+            main_2 => Net_343,
             main_3 => Net_186_6,
             main_4 => Net_186_5,
             main_5 => Net_186_4,
@@ -877,14 +881,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4 * main_5 * main_6 * main_7 * main_8) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_6,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_6,
             main_3 => Net_186_5,
             main_4 => Net_186_4,
@@ -898,14 +901,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4 * main_5 * main_6 * main_7) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_5,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_5,
             main_3 => Net_186_4,
             main_4 => Net_186_3,
@@ -918,14 +920,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4 * main_5 * main_6) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_4,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_4,
             main_3 => Net_186_3,
             main_4 => Net_186_2,
@@ -937,14 +938,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4 * main_5) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_3,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_3,
             main_3 => Net_186_2,
             main_4 => Net_186_1,
@@ -955,14 +955,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3 * main_4) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_2,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_2,
             main_3 => Net_186_1,
             main_4 => Net_186_0);
@@ -972,14 +971,13 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * main_3) + (main_1 * main_2)",
             regmode => 2,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_1,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_1,
             main_3 => Net_186_0);
 
@@ -988,14 +986,13 @@ BEGIN
             eqn_main => "(!main_0 * !main_1 * main_2) + (main_0 * !main_1 * !main_2)",
             regmode => 1,
             clk_inv => '0',
-            clken_inv => '0',
-            clken_mode => 2)
+            clken_mode => 1)
         PORT MAP(
             q => Net_186_0,
-            clk_en => Net_138,
-            clock_0 => Net_289,
+            clk_en => open,
+            clock_0 => Net_338,
             main_0 => Net_313,
-            main_1 => Net_51,
+            main_1 => Net_343,
             main_2 => Net_186_0);
 
 END __DEFAULT__;

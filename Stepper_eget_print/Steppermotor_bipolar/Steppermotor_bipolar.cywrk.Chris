@@ -160,7 +160,8 @@
 <v>Steppermotor_bipolar\Steppermotor_bipolar\and_v1_0\and_v1_0.pdf</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\BasicCounter_v1_0</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\BasicCounter_v1_0\BasicCounter_v1_0.pdf</v>
-<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_clock_v2_20.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_clock_v2_20</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\cy_pins_v2_20</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\CyControlReg_v1_80</v>
@@ -186,7 +187,8 @@
 <v>Steppermotor_bipolar\Steppermotor_bipolar\and_v1_0\and_v1_0.pdf</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\BasicCounter_v1_0</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\BasicCounter_v1_0\BasicCounter_v1_0.pdf</v>
-<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_clock_v2_20.pdf</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_clock_v2_20</v>
+<v>Steppermotor_bipolar\Steppermotor_bipolar\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\cy_pins_v2_20</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>Steppermotor_bipolar\Steppermotor_bipolar\CyControlReg_v1_80</v>
@@ -208,7 +210,18 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\Steppermotor_bipolar.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\Steppermotor_bipolar.cydsn\main.c" />
+<name v=".\Steppermotor_bipolar.cydsn\Steppermotor_bipolar.cydwr" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1456, 731" SelectedTabbedMdiWindow="27559d29-2dde-42a9-819c-e56ae3a6cfcb"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="a901f2ac-3563-4ae0-844d-fd96faed9e67" /><DocumentWindow Key="C:\Users\Chris\Documents\PSoC Creator\Steppermotor_bipolar\Steppermotor_bipolar.cydsn\TopDesign\TopDesign.cysch" Guid="27559d29-2dde-42a9-819c-e56ae3a6cfcb" /><DocumentWindow Key="C:\Users\Chris\Documents\PSoC Creator\Steppermotor_bipolar\Steppermotor_bipolar.cydsn\main.c" Guid="f981d193-4948-450d-b593-5d7e2c793c0d" /><DocumentWindow Key="C:\Users\Chris\Documents\PSoC Creator\Steppermotor_bipolar\Steppermotor_bipolar.cydsn\Steppermotor_bipolar.cydwr" Guid="f9251658-2857-47e3-9945-78c779d251c0" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

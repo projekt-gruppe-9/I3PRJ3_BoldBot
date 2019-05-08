@@ -14,15 +14,15 @@ void stepper_forward(uint8 steps);
 void stepper_reverse(uint8 steps);
 int main(void)
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
+    //CyGlobalIntEnable; /* Enable global interrupts. */
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
     for(;;)
     {
-        stepper_forward(10);
-        
-        CyDelay(3000);
+        CyDelay(5000);
+      stepper_forward(20);
+      
     }
 }
 
@@ -35,6 +35,7 @@ void stepper_forward(uint8 steps) {
 
     Steps_Write(steps);
     Stepper_control_Write(0b00000001);
+    CyDelay(10);
     Stepper_control_Write(0b00000000);
 
 }
@@ -43,6 +44,7 @@ void stepper_reverse(uint8 steps) {
 
     Steps_Write(steps);
     Stepper_control_Write(0b00000011);
+    CyDelay(10);
     Stepper_control_Write(0b00000010);
 
 }
