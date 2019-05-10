@@ -1,0 +1,136 @@
+#include <signal.h>
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "/home/stud/projekt3/src/host/libpixyusb2/include/libpixyusb2.h"
+
+Pixy2        pixy;
+static bool  run_flag = true;
+
+
+void handle_SIGINT(int unused)
+{
+  // Stopper ved tryk på ctrl_C
+
+  run_flag = false;
+}
+
+void  get_blocks()
+{
+  int  Block_Index; // Opretter Block Index
+
+  /* Henter observeret blocks ved at kalde getBlocks funktionen på objektet af
+    Pixy2 klassen pixy. Pixy2.ccc klassen findes i /home/stud/pixy2/src/host/arduino/libraries/Pixy2/Pixy2CCC.h
+  */
+  pixy.ccc.getBlocks();
+
+  // De blocks vi skal bruge ligger i numBlocks, som er størrelsen af blokken
+  // blocks indeholder den data vi skal bruge
+  if (pixy.ccc.numBlocks)
+  {
+    /* Løber igennem block index for at få fat i alle de bloks vi skal bruge.
+       Der vil aldrig være flere blocks end størrelsen af blokken, derfor tjekkes der på
+       pixy.ccc.numBlocks, da det er størrelsen af blokken.
+    */
+    for (Block_Index = 0; Block_Index < pixy.ccc.numBlocks; ++Block_Index)
+    {
+      /* Henter de nødvændige værdier som vi skal bruge til at styre bilen
+         henholdsvis x, y, højde og bredde værdierne.
+      */
+      int x = pixy.ccc.blocks->m_x;
+      int y = pixy.ccc.blocks->m_y;
+      int hojde = pixy.ccc.blocks->m_height;
+      int bredde = pixy.ccc.blocks->m_width;
+
+
+
+      if (x>y) {
+        printf("X er større end Y, kør mod højre!\n");
+
+      };
+
+      if (y>x) {
+        printf("Y er større end X, kør mod venstre!\n");
+
+      };
+
+      if (hojde<40 && bredde<40) {
+          if (x+3==y || y-3==x || x-3==y || y+3==x) {
+            printf("Bolden er for langt væk kør tættere på\n");
+          };
+      };
+
+      // Opsamler mekanisme -- Skal kalibreres
+      if (x==y && hojde==25 && bredde==25) {
+        // stop motorer der driver boldbot frem
+        // start motor der styre opsamler modul
+        printf("Samler bold op\n");
+
+      }
+
+
+      //printf("Dette er x værdien: %d\n", x);
+      //printf("Dette er y værdien: %d\n", y);
+      //printf("Dette er hoejden: %d\n", hojde);
+      //printf("Dette er bredde værdien: %d\n", bredde);
+
+    }
+  }
+}
+
+int main()
+{
+  int  Result;
+
+  // Catch CTRL+C (SIGINT) signals //
+  signal (SIGINT, handle_SIGINT);
+
+  printf ("=============================================================\n");
+  printf ("= PIXY2 Get Blocks Demo                                     =\n");
+  printf ("=============================================================\n");
+
+  printf ("Connecting to Pixy2...");
+
+  // Initialize Pixy2 Connection //
+  {
+    Result = pixy.init();
+
+    if (Result < 0)
+    {
+      printf ("Error\n");
+      printf ("pixy.init() returned %d\n", Result);
+      return Result;
+    }
+
+    printf ("Success\n");
+  }
+
+  // Get Pixy2 Version information //
+  {
+    Result = pixy.getVersion();
+
+    if (Result < 0)
+    {
+      printf ("pixy.getVersion() returned %d\n", Result);
+      return Result;
+    }
+
+    pixy.version->print();
+  }
+
+  // Set Pixy2 to color connected components program //
+  pixy.changeProg("color_connected_components");
+
+  while(1)
+  {
+    get_blocks();
+
+    if (run_flag == false)
+    {
+      // Exit program loop //
+      break;
+    }
+  }
+
+  printf ("PIXY2 Get Blocks Demo Exit\n");
+}
