@@ -1,0 +1,1025 @@
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"sonarSensor.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.getDistance,"ax",%progbits
+  20              		.align	2
+  21              		.global	getDistance
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	getDistance, %function
+  25              	getDistance:
+  26              	.LFB64:
+  27              		.file 1 "sonarSensor.c"
+   1:sonarSensor.c **** #include "sonar.h"
+   2:sonarSensor.c **** 
+   3:sonarSensor.c **** uint16_t getDistance(){
+  28              		.loc 1 3 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+   4:sonarSensor.c **** 	I2C_Master_MasterSendStart(0x70, I2C_Master_WRITE_XFER_MODE);
+  36              		.loc 1 4 0
+  37 0002 0021     		movs	r1, #0
+  38 0004 7020     		movs	r0, #112
+  39 0006 FFF7FEFF 		bl	I2C_Master_MasterSendStart
+  40              	.LVL0:
+   5:sonarSensor.c **** 	I2C_Master_MasterWriteByte(0x51);
+  41              		.loc 1 5 0
+  42 000a 5120     		movs	r0, #81
+  43 000c FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+  44              	.LVL1:
+   6:sonarSensor.c **** 	CyDelay(100);
+  45              		.loc 1 6 0
+  46 0010 6420     		movs	r0, #100
+  47 0012 FFF7FEFF 		bl	CyDelay
+  48              	.LVL2:
+   7:sonarSensor.c **** 	I2C_Master_MasterSendRestart(0x70, 1);
+  49              		.loc 1 7 0
+  50 0016 0121     		movs	r1, #1
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 2
+
+
+  51 0018 7020     		movs	r0, #112
+  52 001a FFF7FEFF 		bl	I2C_Master_MasterSendRestart
+  53              	.LVL3:
+   8:sonarSensor.c ****     uint8_t first = I2C_Master_MasterReadByte(I2C_Master_ACK_DATA);
+  54              		.loc 1 8 0
+  55 001e 0120     		movs	r0, #1
+  56 0020 FFF7FEFF 		bl	I2C_Master_MasterReadByte
+  57              	.LVL4:
+  58 0024 0446     		mov	r4, r0
+  59              	.LVL5:
+   9:sonarSensor.c ****     uint8_t second = I2C_Master_MasterReadByte(I2C_Master_NAK_DATA);
+  60              		.loc 1 9 0
+  61 0026 0020     		movs	r0, #0
+  62 0028 FFF7FEFF 		bl	I2C_Master_MasterReadByte
+  63              	.LVL6:
+  10:sonarSensor.c **** 	uint16_t distCM = first*256+second;
+  64              		.loc 1 10 0
+  65 002c 00EB0420 		add	r0, r0, r4, lsl #8
+  66              	.LVL7:
+  67 0030 84B2     		uxth	r4, r0
+  68              	.LVL8:
+  11:sonarSensor.c **** 	I2C_Master_MasterSendStop();
+  69              		.loc 1 11 0
+  70 0032 FFF7FEFF 		bl	I2C_Master_MasterSendStop
+  71              	.LVL9:
+  12:sonarSensor.c **** 	
+  13:sonarSensor.c **** 	return distCM;
+  14:sonarSensor.c **** }
+  72              		.loc 1 14 0
+  73 0036 2046     		mov	r0, r4
+  74 0038 10BD     		pop	{r4, pc}
+  75              		.cfi_endproc
+  76              	.LFE64:
+  77              		.size	getDistance, .-getDistance
+  78 003a 00BF     		.section	.text.sendData,"ax",%progbits
+  79              		.align	2
+  80              		.global	sendData
+  81              		.thumb
+  82              		.thumb_func
+  83              		.type	sendData, %function
+  84              	sendData:
+  85              	.LFB65:
+  15:sonarSensor.c **** 
+  16:sonarSensor.c **** void sendData(){
+  86              		.loc 1 16 0
+  87              		.cfi_startproc
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+  90 0000 08B5     		push	{r3, lr}
+  91              		.cfi_def_cfa_offset 8
+  92              		.cfi_offset 3, -8
+  93              		.cfi_offset 14, -4
+  94              	.LVL10:
+  17:sonarSensor.c ****     int minimum = 45; 
+  18:sonarSensor.c **** 	int dist = getDistance();
+  95              		.loc 1 18 0
+  96 0002 FFF7FEFF 		bl	getDistance
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 3
+
+
+  97              	.LVL11:
+  19:sonarSensor.c **** 	if(dist < minimum){
+  98              		.loc 1 19 0
+  99 0006 2C28     		cmp	r0, #44
+ 100 0008 06DC     		bgt	.L4
+  20:sonarSensor.c **** 		sonarOutput_Write(1);
+ 101              		.loc 1 20 0
+ 102 000a 0120     		movs	r0, #1
+ 103              	.LVL12:
+ 104 000c FFF7FEFF 		bl	sonarOutput_Write
+ 105              	.LVL13:
+  21:sonarSensor.c ****        UART_1_PutString("HIGH\n");  
+ 106              		.loc 1 21 0
+ 107 0010 0548     		ldr	r0, .L7
+ 108 0012 FFF7FEFF 		bl	UART_1_PutString
+ 109              	.LVL14:
+ 110 0016 08BD     		pop	{r3, pc}
+ 111              	.LVL15:
+ 112              	.L4:
+  22:sonarSensor.c **** 	} 
+  23:sonarSensor.c ****     else {
+  24:sonarSensor.c ****         UART_1_PutString("LOW\n");
+ 113              		.loc 1 24 0
+ 114 0018 0448     		ldr	r0, .L7+4
+ 115              	.LVL16:
+ 116 001a FFF7FEFF 		bl	UART_1_PutString
+ 117              	.LVL17:
+  25:sonarSensor.c **** 		sonarOutput_Write(0);
+ 118              		.loc 1 25 0
+ 119 001e 0020     		movs	r0, #0
+ 120 0020 FFF7FEFF 		bl	sonarOutput_Write
+ 121              	.LVL18:
+ 122 0024 08BD     		pop	{r3, pc}
+ 123              	.L8:
+ 124 0026 00BF     		.align	2
+ 125              	.L7:
+ 126 0028 00000000 		.word	.LC0
+ 127 002c 08000000 		.word	.LC1
+ 128              		.cfi_endproc
+ 129              	.LFE65:
+ 130              		.size	sendData, .-sendData
+ 131              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 132              		.align	2
+ 133              	.LC0:
+ 134 0000 48494748 		.ascii	"HIGH\012\000"
+ 134      0A00
+ 135 0006 0000     		.space	2
+ 136              	.LC1:
+ 137 0008 4C4F570A 		.ascii	"LOW\012\000"
+ 137      00
+ 138              		.text
+ 139              	.Letext0:
+ 140              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 141              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.
+ 142              		.file 4 "Generated_Source\\PSoC5/I2C_Master.h"
+ 143              		.file 5 "Generated_Source\\PSoC5/CyLib.h"
+ 144              		.file 6 "Generated_Source\\PSoC5/sonarOutput.h"
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 4
+
+
+ 145              		.file 7 "Generated_Source\\PSoC5/UART_1.h"
+ 146              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 147              		.section	.debug_info,"",%progbits
+ 148              	.Ldebug_info0:
+ 149 0000 8E020000 		.4byte	0x28e
+ 150 0004 0400     		.2byte	0x4
+ 151 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 152 000a 04       		.byte	0x4
+ 153 000b 01       		.uleb128 0x1
+ 154 000c A8000000 		.4byte	.LASF33
+ 155 0010 0C       		.byte	0xc
+ 156 0011 F3010000 		.4byte	.LASF34
+ 157 0015 48000000 		.4byte	.LASF35
+ 158 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 159 001d 00000000 		.4byte	0
+ 160 0021 00000000 		.4byte	.Ldebug_line0
+ 161 0025 02       		.uleb128 0x2
+ 162 0026 01       		.byte	0x1
+ 163 0027 06       		.byte	0x6
+ 164 0028 7F020000 		.4byte	.LASF0
+ 165 002c 03       		.uleb128 0x3
+ 166 002d 00000000 		.4byte	.LASF3
+ 167 0031 02       		.byte	0x2
+ 168 0032 1D       		.byte	0x1d
+ 169 0033 37000000 		.4byte	0x37
+ 170 0037 02       		.uleb128 0x2
+ 171 0038 01       		.byte	0x1
+ 172 0039 08       		.byte	0x8
+ 173 003a 82010000 		.4byte	.LASF1
+ 174 003e 02       		.uleb128 0x2
+ 175 003f 02       		.byte	0x2
+ 176 0040 05       		.byte	0x5
+ 177 0041 3D020000 		.4byte	.LASF2
+ 178 0045 03       		.uleb128 0x3
+ 179 0046 90010000 		.4byte	.LASF4
+ 180 004a 02       		.byte	0x2
+ 181 004b 2B       		.byte	0x2b
+ 182 004c 50000000 		.4byte	0x50
+ 183 0050 02       		.uleb128 0x2
+ 184 0051 02       		.byte	0x2
+ 185 0052 07       		.byte	0x7
+ 186 0053 5A010000 		.4byte	.LASF5
+ 187 0057 03       		.uleb128 0x3
+ 188 0058 24000000 		.4byte	.LASF6
+ 189 005c 02       		.byte	0x2
+ 190 005d 3F       		.byte	0x3f
+ 191 005e 62000000 		.4byte	0x62
+ 192 0062 02       		.uleb128 0x2
+ 193 0063 04       		.byte	0x4
+ 194 0064 05       		.byte	0x5
+ 195 0065 50020000 		.4byte	.LASF7
+ 196 0069 02       		.uleb128 0x2
+ 197 006a 04       		.byte	0x4
+ 198 006b 07       		.byte	0x7
+ 199 006c 48010000 		.4byte	.LASF8
+ 200 0070 02       		.uleb128 0x2
+ 201 0071 08       		.byte	0x8
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 5
+
+
+ 202 0072 05       		.byte	0x5
+ 203 0073 2A020000 		.4byte	.LASF9
+ 204 0077 02       		.uleb128 0x2
+ 205 0078 08       		.byte	0x8
+ 206 0079 07       		.byte	0x7
+ 207 007a C2010000 		.4byte	.LASF10
+ 208 007e 04       		.uleb128 0x4
+ 209 007f 04       		.byte	0x4
+ 210 0080 05       		.byte	0x5
+ 211 0081 696E7400 		.ascii	"int\000"
+ 212 0085 02       		.uleb128 0x2
+ 213 0086 04       		.byte	0x4
+ 214 0087 07       		.byte	0x7
+ 215 0088 B5010000 		.4byte	.LASF11
+ 216 008c 03       		.uleb128 0x3
+ 217 008d 2E000000 		.4byte	.LASF12
+ 218 0091 03       		.byte	0x3
+ 219 0092 18       		.byte	0x18
+ 220 0093 2C000000 		.4byte	0x2c
+ 221 0097 03       		.uleb128 0x3
+ 222 0098 47020000 		.4byte	.LASF13
+ 223 009c 03       		.byte	0x3
+ 224 009d 24       		.byte	0x24
+ 225 009e 45000000 		.4byte	0x45
+ 226 00a2 03       		.uleb128 0x3
+ 227 00a3 7F000000 		.4byte	.LASF14
+ 228 00a7 03       		.byte	0x3
+ 229 00a8 2C       		.byte	0x2c
+ 230 00a9 57000000 		.4byte	0x57
+ 231 00ad 02       		.uleb128 0x2
+ 232 00ae 04       		.byte	0x4
+ 233 00af 04       		.byte	0x4
+ 234 00b0 87000000 		.4byte	.LASF15
+ 235 00b4 02       		.uleb128 0x2
+ 236 00b5 08       		.byte	0x8
+ 237 00b6 04       		.byte	0x4
+ 238 00b7 9B010000 		.4byte	.LASF16
+ 239 00bb 02       		.uleb128 0x2
+ 240 00bc 01       		.byte	0x1
+ 241 00bd 08       		.byte	0x8
+ 242 00be 38020000 		.4byte	.LASF17
+ 243 00c2 02       		.uleb128 0x2
+ 244 00c3 08       		.byte	0x8
+ 245 00c4 04       		.byte	0x4
+ 246 00c5 A2010000 		.4byte	.LASF18
+ 247 00c9 02       		.uleb128 0x2
+ 248 00ca 04       		.byte	0x4
+ 249 00cb 07       		.byte	0x7
+ 250 00cc 21020000 		.4byte	.LASF19
+ 251 00d0 05       		.uleb128 0x5
+ 252 00d1 3C000000 		.4byte	.LASF36
+ 253 00d5 01       		.byte	0x1
+ 254 00d6 03       		.byte	0x3
+ 255 00d7 97000000 		.4byte	0x97
+ 256 00db 00000000 		.4byte	.LFB64
+ 257 00df 3A000000 		.4byte	.LFE64-.LFB64
+ 258 00e3 01       		.uleb128 0x1
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 6
+
+
+ 259 00e4 9C       		.byte	0x9c
+ 260 00e5 9E010000 		.4byte	0x19e
+ 261 00e9 06       		.uleb128 0x6
+ 262 00ea 36000000 		.4byte	.LASF20
+ 263 00ee 01       		.byte	0x1
+ 264 00ef 08       		.byte	0x8
+ 265 00f0 8C000000 		.4byte	0x8c
+ 266 00f4 00000000 		.4byte	.LLST0
+ 267 00f8 06       		.uleb128 0x6
+ 268 00f9 AE010000 		.4byte	.LASF21
+ 269 00fd 01       		.byte	0x1
+ 270 00fe 09       		.byte	0x9
+ 271 00ff 8C000000 		.4byte	0x8c
+ 272 0103 13000000 		.4byte	.LLST1
+ 273 0107 07       		.uleb128 0x7
+ 274 0108 A4020000 		.4byte	.LASF22
+ 275 010c 01       		.byte	0x1
+ 276 010d 0A       		.byte	0xa
+ 277 010e 97000000 		.4byte	0x97
+ 278 0112 01       		.uleb128 0x1
+ 279 0113 54       		.byte	0x54
+ 280 0114 08       		.uleb128 0x8
+ 281 0115 0A000000 		.4byte	.LVL0
+ 282 0119 39020000 		.4byte	0x239
+ 283 011d 2D010000 		.4byte	0x12d
+ 284 0121 09       		.uleb128 0x9
+ 285 0122 01       		.uleb128 0x1
+ 286 0123 50       		.byte	0x50
+ 287 0124 02       		.uleb128 0x2
+ 288 0125 08       		.byte	0x8
+ 289 0126 70       		.byte	0x70
+ 290 0127 09       		.uleb128 0x9
+ 291 0128 01       		.uleb128 0x1
+ 292 0129 51       		.byte	0x51
+ 293 012a 01       		.uleb128 0x1
+ 294 012b 30       		.byte	0x30
+ 295 012c 00       		.byte	0
+ 296 012d 08       		.uleb128 0x8
+ 297 012e 10000000 		.4byte	.LVL1
+ 298 0132 44020000 		.4byte	0x244
+ 299 0136 41010000 		.4byte	0x141
+ 300 013a 09       		.uleb128 0x9
+ 301 013b 01       		.uleb128 0x1
+ 302 013c 50       		.byte	0x50
+ 303 013d 02       		.uleb128 0x2
+ 304 013e 08       		.byte	0x8
+ 305 013f 51       		.byte	0x51
+ 306 0140 00       		.byte	0
+ 307 0141 08       		.uleb128 0x8
+ 308 0142 16000000 		.4byte	.LVL2
+ 309 0146 4F020000 		.4byte	0x24f
+ 310 014a 55010000 		.4byte	0x155
+ 311 014e 09       		.uleb128 0x9
+ 312 014f 01       		.uleb128 0x1
+ 313 0150 50       		.byte	0x50
+ 314 0151 02       		.uleb128 0x2
+ 315 0152 08       		.byte	0x8
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 7
+
+
+ 316 0153 64       		.byte	0x64
+ 317 0154 00       		.byte	0
+ 318 0155 08       		.uleb128 0x8
+ 319 0156 1E000000 		.4byte	.LVL3
+ 320 015a 5A020000 		.4byte	0x25a
+ 321 015e 6E010000 		.4byte	0x16e
+ 322 0162 09       		.uleb128 0x9
+ 323 0163 01       		.uleb128 0x1
+ 324 0164 50       		.byte	0x50
+ 325 0165 02       		.uleb128 0x2
+ 326 0166 08       		.byte	0x8
+ 327 0167 70       		.byte	0x70
+ 328 0168 09       		.uleb128 0x9
+ 329 0169 01       		.uleb128 0x1
+ 330 016a 51       		.byte	0x51
+ 331 016b 01       		.uleb128 0x1
+ 332 016c 31       		.byte	0x31
+ 333 016d 00       		.byte	0
+ 334 016e 08       		.uleb128 0x8
+ 335 016f 24000000 		.4byte	.LVL4
+ 336 0173 65020000 		.4byte	0x265
+ 337 0177 81010000 		.4byte	0x181
+ 338 017b 09       		.uleb128 0x9
+ 339 017c 01       		.uleb128 0x1
+ 340 017d 50       		.byte	0x50
+ 341 017e 01       		.uleb128 0x1
+ 342 017f 31       		.byte	0x31
+ 343 0180 00       		.byte	0
+ 344 0181 08       		.uleb128 0x8
+ 345 0182 2C000000 		.4byte	.LVL6
+ 346 0186 65020000 		.4byte	0x265
+ 347 018a 94010000 		.4byte	0x194
+ 348 018e 09       		.uleb128 0x9
+ 349 018f 01       		.uleb128 0x1
+ 350 0190 50       		.byte	0x50
+ 351 0191 01       		.uleb128 0x1
+ 352 0192 30       		.byte	0x30
+ 353 0193 00       		.byte	0
+ 354 0194 0A       		.uleb128 0xa
+ 355 0195 36000000 		.4byte	.LVL9
+ 356 0199 70020000 		.4byte	0x270
+ 357 019d 00       		.byte	0
+ 358 019e 0B       		.uleb128 0xb
+ 359 019f 59020000 		.4byte	.LASF37
+ 360 01a3 01       		.byte	0x1
+ 361 01a4 10       		.byte	0x10
+ 362 01a5 00000000 		.4byte	.LFB65
+ 363 01a9 30000000 		.4byte	.LFE65-.LFB65
+ 364 01ad 01       		.uleb128 0x1
+ 365 01ae 9C       		.byte	0x9c
+ 366 01af 28020000 		.4byte	0x228
+ 367 01b3 0C       		.uleb128 0xc
+ 368 01b4 7A010000 		.4byte	.LASF23
+ 369 01b8 01       		.byte	0x1
+ 370 01b9 11       		.byte	0x11
+ 371 01ba 7E000000 		.4byte	0x7e
+ 372 01be 2D       		.byte	0x2d
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 8
+
+
+ 373 01bf 06       		.uleb128 0x6
+ 374 01c0 01020000 		.4byte	.LASF24
+ 375 01c4 01       		.byte	0x1
+ 376 01c5 12       		.byte	0x12
+ 377 01c6 7E000000 		.4byte	0x7e
+ 378 01ca 26000000 		.4byte	.LLST2
+ 379 01ce 0A       		.uleb128 0xa
+ 380 01cf 06000000 		.4byte	.LVL11
+ 381 01d3 D0000000 		.4byte	0xd0
+ 382 01d7 08       		.uleb128 0x8
+ 383 01d8 10000000 		.4byte	.LVL13
+ 384 01dc 7B020000 		.4byte	0x27b
+ 385 01e0 EA010000 		.4byte	0x1ea
+ 386 01e4 09       		.uleb128 0x9
+ 387 01e5 01       		.uleb128 0x1
+ 388 01e6 50       		.byte	0x50
+ 389 01e7 01       		.uleb128 0x1
+ 390 01e8 31       		.byte	0x31
+ 391 01e9 00       		.byte	0
+ 392 01ea 08       		.uleb128 0x8
+ 393 01eb 16000000 		.4byte	.LVL14
+ 394 01ef 86020000 		.4byte	0x286
+ 395 01f3 01020000 		.4byte	0x201
+ 396 01f7 09       		.uleb128 0x9
+ 397 01f8 01       		.uleb128 0x1
+ 398 01f9 50       		.byte	0x50
+ 399 01fa 05       		.uleb128 0x5
+ 400 01fb 03       		.byte	0x3
+ 401 01fc 00000000 		.4byte	.LC0
+ 402 0200 00       		.byte	0
+ 403 0201 08       		.uleb128 0x8
+ 404 0202 1E000000 		.4byte	.LVL17
+ 405 0206 86020000 		.4byte	0x286
+ 406 020a 18020000 		.4byte	0x218
+ 407 020e 09       		.uleb128 0x9
+ 408 020f 01       		.uleb128 0x1
+ 409 0210 50       		.byte	0x50
+ 410 0211 05       		.uleb128 0x5
+ 411 0212 03       		.byte	0x3
+ 412 0213 08000000 		.4byte	.LC1
+ 413 0217 00       		.byte	0
+ 414 0218 0D       		.uleb128 0xd
+ 415 0219 24000000 		.4byte	.LVL18
+ 416 021d 7B020000 		.4byte	0x27b
+ 417 0221 09       		.uleb128 0x9
+ 418 0222 01       		.uleb128 0x1
+ 419 0223 50       		.byte	0x50
+ 420 0224 01       		.uleb128 0x1
+ 421 0225 30       		.byte	0x30
+ 422 0226 00       		.byte	0
+ 423 0227 00       		.byte	0
+ 424 0228 0E       		.uleb128 0xe
+ 425 0229 6D010000 		.4byte	.LASF38
+ 426 022d 08       		.byte	0x8
+ 427 022e 1207     		.2byte	0x712
+ 428 0230 34020000 		.4byte	0x234
+ 429 0234 0F       		.uleb128 0xf
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 9
+
+
+ 430 0235 A2000000 		.4byte	0xa2
+ 431 0239 10       		.uleb128 0x10
+ 432 023a 06020000 		.4byte	.LASF25
+ 433 023e 06020000 		.4byte	.LASF25
+ 434 0242 04       		.byte	0x4
+ 435 0243 B1       		.byte	0xb1
+ 436 0244 10       		.uleb128 0x10
+ 437 0245 8D000000 		.4byte	.LASF26
+ 438 0249 8D000000 		.4byte	.LASF26
+ 439 024d 04       		.byte	0x4
+ 440 024e B6       		.byte	0xb6
+ 441 024f 10       		.uleb128 0x10
+ 442 0250 9C020000 		.4byte	.LASF27
+ 443 0254 9C020000 		.4byte	.LASF27
+ 444 0258 05       		.byte	0x5
+ 445 0259 76       		.byte	0x76
+ 446 025a 10       		.uleb128 0x10
+ 447 025b 62020000 		.4byte	.LASF28
+ 448 025f 62020000 		.4byte	.LASF28
+ 449 0263 04       		.byte	0x4
+ 450 0264 B3       		.byte	0xb3
+ 451 0265 10       		.uleb128 0x10
+ 452 0266 D9010000 		.4byte	.LASF29
+ 453 026a D9010000 		.4byte	.LASF29
+ 454 026e 04       		.byte	0x4
+ 455 026f B7       		.byte	0xb7
+ 456 0270 10       		.uleb128 0x10
+ 457 0271 0A000000 		.4byte	.LASF30
+ 458 0275 0A000000 		.4byte	.LASF30
+ 459 0279 04       		.byte	0x4
+ 460 027a B5       		.byte	0xb5
+ 461 027b 10       		.uleb128 0x10
+ 462 027c 36010000 		.4byte	.LASF31
+ 463 0280 36010000 		.4byte	.LASF31
+ 464 0284 06       		.byte	0x6
+ 465 0285 26       		.byte	0x26
+ 466 0286 10       		.uleb128 0x10
+ 467 0287 8B020000 		.4byte	.LASF32
+ 468 028b 8B020000 		.4byte	.LASF32
+ 469 028f 07       		.byte	0x7
+ 470 0290 8B       		.byte	0x8b
+ 471 0291 00       		.byte	0
+ 472              		.section	.debug_abbrev,"",%progbits
+ 473              	.Ldebug_abbrev0:
+ 474 0000 01       		.uleb128 0x1
+ 475 0001 11       		.uleb128 0x11
+ 476 0002 01       		.byte	0x1
+ 477 0003 25       		.uleb128 0x25
+ 478 0004 0E       		.uleb128 0xe
+ 479 0005 13       		.uleb128 0x13
+ 480 0006 0B       		.uleb128 0xb
+ 481 0007 03       		.uleb128 0x3
+ 482 0008 0E       		.uleb128 0xe
+ 483 0009 1B       		.uleb128 0x1b
+ 484 000a 0E       		.uleb128 0xe
+ 485 000b 55       		.uleb128 0x55
+ 486 000c 17       		.uleb128 0x17
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 10
+
+
+ 487 000d 11       		.uleb128 0x11
+ 488 000e 01       		.uleb128 0x1
+ 489 000f 10       		.uleb128 0x10
+ 490 0010 17       		.uleb128 0x17
+ 491 0011 00       		.byte	0
+ 492 0012 00       		.byte	0
+ 493 0013 02       		.uleb128 0x2
+ 494 0014 24       		.uleb128 0x24
+ 495 0015 00       		.byte	0
+ 496 0016 0B       		.uleb128 0xb
+ 497 0017 0B       		.uleb128 0xb
+ 498 0018 3E       		.uleb128 0x3e
+ 499 0019 0B       		.uleb128 0xb
+ 500 001a 03       		.uleb128 0x3
+ 501 001b 0E       		.uleb128 0xe
+ 502 001c 00       		.byte	0
+ 503 001d 00       		.byte	0
+ 504 001e 03       		.uleb128 0x3
+ 505 001f 16       		.uleb128 0x16
+ 506 0020 00       		.byte	0
+ 507 0021 03       		.uleb128 0x3
+ 508 0022 0E       		.uleb128 0xe
+ 509 0023 3A       		.uleb128 0x3a
+ 510 0024 0B       		.uleb128 0xb
+ 511 0025 3B       		.uleb128 0x3b
+ 512 0026 0B       		.uleb128 0xb
+ 513 0027 49       		.uleb128 0x49
+ 514 0028 13       		.uleb128 0x13
+ 515 0029 00       		.byte	0
+ 516 002a 00       		.byte	0
+ 517 002b 04       		.uleb128 0x4
+ 518 002c 24       		.uleb128 0x24
+ 519 002d 00       		.byte	0
+ 520 002e 0B       		.uleb128 0xb
+ 521 002f 0B       		.uleb128 0xb
+ 522 0030 3E       		.uleb128 0x3e
+ 523 0031 0B       		.uleb128 0xb
+ 524 0032 03       		.uleb128 0x3
+ 525 0033 08       		.uleb128 0x8
+ 526 0034 00       		.byte	0
+ 527 0035 00       		.byte	0
+ 528 0036 05       		.uleb128 0x5
+ 529 0037 2E       		.uleb128 0x2e
+ 530 0038 01       		.byte	0x1
+ 531 0039 3F       		.uleb128 0x3f
+ 532 003a 19       		.uleb128 0x19
+ 533 003b 03       		.uleb128 0x3
+ 534 003c 0E       		.uleb128 0xe
+ 535 003d 3A       		.uleb128 0x3a
+ 536 003e 0B       		.uleb128 0xb
+ 537 003f 3B       		.uleb128 0x3b
+ 538 0040 0B       		.uleb128 0xb
+ 539 0041 49       		.uleb128 0x49
+ 540 0042 13       		.uleb128 0x13
+ 541 0043 11       		.uleb128 0x11
+ 542 0044 01       		.uleb128 0x1
+ 543 0045 12       		.uleb128 0x12
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 11
+
+
+ 544 0046 06       		.uleb128 0x6
+ 545 0047 40       		.uleb128 0x40
+ 546 0048 18       		.uleb128 0x18
+ 547 0049 9742     		.uleb128 0x2117
+ 548 004b 19       		.uleb128 0x19
+ 549 004c 01       		.uleb128 0x1
+ 550 004d 13       		.uleb128 0x13
+ 551 004e 00       		.byte	0
+ 552 004f 00       		.byte	0
+ 553 0050 06       		.uleb128 0x6
+ 554 0051 34       		.uleb128 0x34
+ 555 0052 00       		.byte	0
+ 556 0053 03       		.uleb128 0x3
+ 557 0054 0E       		.uleb128 0xe
+ 558 0055 3A       		.uleb128 0x3a
+ 559 0056 0B       		.uleb128 0xb
+ 560 0057 3B       		.uleb128 0x3b
+ 561 0058 0B       		.uleb128 0xb
+ 562 0059 49       		.uleb128 0x49
+ 563 005a 13       		.uleb128 0x13
+ 564 005b 02       		.uleb128 0x2
+ 565 005c 17       		.uleb128 0x17
+ 566 005d 00       		.byte	0
+ 567 005e 00       		.byte	0
+ 568 005f 07       		.uleb128 0x7
+ 569 0060 34       		.uleb128 0x34
+ 570 0061 00       		.byte	0
+ 571 0062 03       		.uleb128 0x3
+ 572 0063 0E       		.uleb128 0xe
+ 573 0064 3A       		.uleb128 0x3a
+ 574 0065 0B       		.uleb128 0xb
+ 575 0066 3B       		.uleb128 0x3b
+ 576 0067 0B       		.uleb128 0xb
+ 577 0068 49       		.uleb128 0x49
+ 578 0069 13       		.uleb128 0x13
+ 579 006a 02       		.uleb128 0x2
+ 580 006b 18       		.uleb128 0x18
+ 581 006c 00       		.byte	0
+ 582 006d 00       		.byte	0
+ 583 006e 08       		.uleb128 0x8
+ 584 006f 898201   		.uleb128 0x4109
+ 585 0072 01       		.byte	0x1
+ 586 0073 11       		.uleb128 0x11
+ 587 0074 01       		.uleb128 0x1
+ 588 0075 31       		.uleb128 0x31
+ 589 0076 13       		.uleb128 0x13
+ 590 0077 01       		.uleb128 0x1
+ 591 0078 13       		.uleb128 0x13
+ 592 0079 00       		.byte	0
+ 593 007a 00       		.byte	0
+ 594 007b 09       		.uleb128 0x9
+ 595 007c 8A8201   		.uleb128 0x410a
+ 596 007f 00       		.byte	0
+ 597 0080 02       		.uleb128 0x2
+ 598 0081 18       		.uleb128 0x18
+ 599 0082 9142     		.uleb128 0x2111
+ 600 0084 18       		.uleb128 0x18
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 12
+
+
+ 601 0085 00       		.byte	0
+ 602 0086 00       		.byte	0
+ 603 0087 0A       		.uleb128 0xa
+ 604 0088 898201   		.uleb128 0x4109
+ 605 008b 00       		.byte	0
+ 606 008c 11       		.uleb128 0x11
+ 607 008d 01       		.uleb128 0x1
+ 608 008e 31       		.uleb128 0x31
+ 609 008f 13       		.uleb128 0x13
+ 610 0090 00       		.byte	0
+ 611 0091 00       		.byte	0
+ 612 0092 0B       		.uleb128 0xb
+ 613 0093 2E       		.uleb128 0x2e
+ 614 0094 01       		.byte	0x1
+ 615 0095 3F       		.uleb128 0x3f
+ 616 0096 19       		.uleb128 0x19
+ 617 0097 03       		.uleb128 0x3
+ 618 0098 0E       		.uleb128 0xe
+ 619 0099 3A       		.uleb128 0x3a
+ 620 009a 0B       		.uleb128 0xb
+ 621 009b 3B       		.uleb128 0x3b
+ 622 009c 0B       		.uleb128 0xb
+ 623 009d 11       		.uleb128 0x11
+ 624 009e 01       		.uleb128 0x1
+ 625 009f 12       		.uleb128 0x12
+ 626 00a0 06       		.uleb128 0x6
+ 627 00a1 40       		.uleb128 0x40
+ 628 00a2 18       		.uleb128 0x18
+ 629 00a3 9742     		.uleb128 0x2117
+ 630 00a5 19       		.uleb128 0x19
+ 631 00a6 01       		.uleb128 0x1
+ 632 00a7 13       		.uleb128 0x13
+ 633 00a8 00       		.byte	0
+ 634 00a9 00       		.byte	0
+ 635 00aa 0C       		.uleb128 0xc
+ 636 00ab 34       		.uleb128 0x34
+ 637 00ac 00       		.byte	0
+ 638 00ad 03       		.uleb128 0x3
+ 639 00ae 0E       		.uleb128 0xe
+ 640 00af 3A       		.uleb128 0x3a
+ 641 00b0 0B       		.uleb128 0xb
+ 642 00b1 3B       		.uleb128 0x3b
+ 643 00b2 0B       		.uleb128 0xb
+ 644 00b3 49       		.uleb128 0x49
+ 645 00b4 13       		.uleb128 0x13
+ 646 00b5 1C       		.uleb128 0x1c
+ 647 00b6 0B       		.uleb128 0xb
+ 648 00b7 00       		.byte	0
+ 649 00b8 00       		.byte	0
+ 650 00b9 0D       		.uleb128 0xd
+ 651 00ba 898201   		.uleb128 0x4109
+ 652 00bd 01       		.byte	0x1
+ 653 00be 11       		.uleb128 0x11
+ 654 00bf 01       		.uleb128 0x1
+ 655 00c0 31       		.uleb128 0x31
+ 656 00c1 13       		.uleb128 0x13
+ 657 00c2 00       		.byte	0
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 13
+
+
+ 658 00c3 00       		.byte	0
+ 659 00c4 0E       		.uleb128 0xe
+ 660 00c5 34       		.uleb128 0x34
+ 661 00c6 00       		.byte	0
+ 662 00c7 03       		.uleb128 0x3
+ 663 00c8 0E       		.uleb128 0xe
+ 664 00c9 3A       		.uleb128 0x3a
+ 665 00ca 0B       		.uleb128 0xb
+ 666 00cb 3B       		.uleb128 0x3b
+ 667 00cc 05       		.uleb128 0x5
+ 668 00cd 49       		.uleb128 0x49
+ 669 00ce 13       		.uleb128 0x13
+ 670 00cf 3F       		.uleb128 0x3f
+ 671 00d0 19       		.uleb128 0x19
+ 672 00d1 3C       		.uleb128 0x3c
+ 673 00d2 19       		.uleb128 0x19
+ 674 00d3 00       		.byte	0
+ 675 00d4 00       		.byte	0
+ 676 00d5 0F       		.uleb128 0xf
+ 677 00d6 35       		.uleb128 0x35
+ 678 00d7 00       		.byte	0
+ 679 00d8 49       		.uleb128 0x49
+ 680 00d9 13       		.uleb128 0x13
+ 681 00da 00       		.byte	0
+ 682 00db 00       		.byte	0
+ 683 00dc 10       		.uleb128 0x10
+ 684 00dd 2E       		.uleb128 0x2e
+ 685 00de 00       		.byte	0
+ 686 00df 3F       		.uleb128 0x3f
+ 687 00e0 19       		.uleb128 0x19
+ 688 00e1 3C       		.uleb128 0x3c
+ 689 00e2 19       		.uleb128 0x19
+ 690 00e3 6E       		.uleb128 0x6e
+ 691 00e4 0E       		.uleb128 0xe
+ 692 00e5 03       		.uleb128 0x3
+ 693 00e6 0E       		.uleb128 0xe
+ 694 00e7 3A       		.uleb128 0x3a
+ 695 00e8 0B       		.uleb128 0xb
+ 696 00e9 3B       		.uleb128 0x3b
+ 697 00ea 0B       		.uleb128 0xb
+ 698 00eb 00       		.byte	0
+ 699 00ec 00       		.byte	0
+ 700 00ed 00       		.byte	0
+ 701              		.section	.debug_loc,"",%progbits
+ 702              	.Ldebug_loc0:
+ 703              	.LLST0:
+ 704 0000 26000000 		.4byte	.LVL5
+ 705 0004 32000000 		.4byte	.LVL8
+ 706 0008 0100     		.2byte	0x1
+ 707 000a 54       		.byte	0x54
+ 708 000b 00000000 		.4byte	0
+ 709 000f 00000000 		.4byte	0
+ 710              	.LLST1:
+ 711 0013 2C000000 		.4byte	.LVL6
+ 712 0017 30000000 		.4byte	.LVL7
+ 713 001b 0100     		.2byte	0x1
+ 714 001d 50       		.byte	0x50
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 14
+
+
+ 715 001e 00000000 		.4byte	0
+ 716 0022 00000000 		.4byte	0
+ 717              	.LLST2:
+ 718 0026 06000000 		.4byte	.LVL11
+ 719 002a 0C000000 		.4byte	.LVL12
+ 720 002e 0100     		.2byte	0x1
+ 721 0030 50       		.byte	0x50
+ 722 0031 18000000 		.4byte	.LVL15
+ 723 0035 1A000000 		.4byte	.LVL16
+ 724 0039 0100     		.2byte	0x1
+ 725 003b 50       		.byte	0x50
+ 726 003c 00000000 		.4byte	0
+ 727 0040 00000000 		.4byte	0
+ 728              		.section	.debug_aranges,"",%progbits
+ 729 0000 24000000 		.4byte	0x24
+ 730 0004 0200     		.2byte	0x2
+ 731 0006 00000000 		.4byte	.Ldebug_info0
+ 732 000a 04       		.byte	0x4
+ 733 000b 00       		.byte	0
+ 734 000c 0000     		.2byte	0
+ 735 000e 0000     		.2byte	0
+ 736 0010 00000000 		.4byte	.LFB64
+ 737 0014 3A000000 		.4byte	.LFE64-.LFB64
+ 738 0018 00000000 		.4byte	.LFB65
+ 739 001c 30000000 		.4byte	.LFE65-.LFB65
+ 740 0020 00000000 		.4byte	0
+ 741 0024 00000000 		.4byte	0
+ 742              		.section	.debug_ranges,"",%progbits
+ 743              	.Ldebug_ranges0:
+ 744 0000 00000000 		.4byte	.LFB64
+ 745 0004 3A000000 		.4byte	.LFE64
+ 746 0008 00000000 		.4byte	.LFB65
+ 747 000c 30000000 		.4byte	.LFE65
+ 748 0010 00000000 		.4byte	0
+ 749 0014 00000000 		.4byte	0
+ 750              		.section	.debug_line,"",%progbits
+ 751              	.Ldebug_line0:
+ 752 0000 AF010000 		.section	.debug_str,"MS",%progbits,1
+ 752      02007E01 
+ 752      00000201 
+ 752      FB0E0D00 
+ 752      01010101 
+ 753              	.LASF3:
+ 754 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 754      6E74385F 
+ 754      7400
+ 755              	.LASF30:
+ 756 000a 4932435F 		.ascii	"I2C_Master_MasterSendStop\000"
+ 756      4D617374 
+ 756      65725F4D 
+ 756      61737465 
+ 756      7253656E 
+ 757              	.LASF6:
+ 758 0024 5F5F696E 		.ascii	"__int32_t\000"
+ 758      7433325F 
+ 758      7400
+ 759              	.LASF12:
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 15
+
+
+ 760 002e 75696E74 		.ascii	"uint8_t\000"
+ 760      385F7400 
+ 761              	.LASF20:
+ 762 0036 66697273 		.ascii	"first\000"
+ 762      7400
+ 763              	.LASF36:
+ 764 003c 67657444 		.ascii	"getDistance\000"
+ 764      69737461 
+ 764      6E636500 
+ 765              	.LASF35:
+ 766 0048 433A5C55 		.ascii	"C:\\Users\\andre\\Desktop\\Motorstyring\\Motorstyri"
+ 766      73657273 
+ 766      5C616E64 
+ 766      72655C44 
+ 766      65736B74 
+ 767 0076 6E672E63 		.ascii	"ng.cydsn\000"
+ 767      7964736E 
+ 767      00
+ 768              	.LASF14:
+ 769 007f 696E7433 		.ascii	"int32_t\000"
+ 769      325F7400 
+ 770              	.LASF15:
+ 771 0087 666C6F61 		.ascii	"float\000"
+ 771      7400
+ 772              	.LASF26:
+ 773 008d 4932435F 		.ascii	"I2C_Master_MasterWriteByte\000"
+ 773      4D617374 
+ 773      65725F4D 
+ 773      61737465 
+ 773      72577269 
+ 774              	.LASF33:
+ 775 00a8 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 775      43313120 
+ 775      352E342E 
+ 775      31203230 
+ 775      31363036 
+ 776 00db 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 776      20726576 
+ 776      6973696F 
+ 776      6E203233 
+ 776      37373135 
+ 777 010e 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 777      66756E63 
+ 777      74696F6E 
+ 777      2D736563 
+ 777      74696F6E 
+ 778              	.LASF31:
+ 779 0136 736F6E61 		.ascii	"sonarOutput_Write\000"
+ 779      724F7574 
+ 779      7075745F 
+ 779      57726974 
+ 779      6500
+ 780              	.LASF8:
+ 781 0148 6C6F6E67 		.ascii	"long unsigned int\000"
+ 781      20756E73 
+ 781      69676E65 
+ 781      6420696E 
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 16
+
+
+ 781      7400
+ 782              	.LASF5:
+ 783 015a 73686F72 		.ascii	"short unsigned int\000"
+ 783      7420756E 
+ 783      7369676E 
+ 783      65642069 
+ 783      6E7400
+ 784              	.LASF38:
+ 785 016d 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 785      52784275 
+ 785      66666572 
+ 785      00
+ 786              	.LASF23:
+ 787 017a 6D696E69 		.ascii	"minimum\000"
+ 787      6D756D00 
+ 788              	.LASF1:
+ 789 0182 756E7369 		.ascii	"unsigned char\000"
+ 789      676E6564 
+ 789      20636861 
+ 789      7200
+ 790              	.LASF4:
+ 791 0190 5F5F7569 		.ascii	"__uint16_t\000"
+ 791      6E743136 
+ 791      5F7400
+ 792              	.LASF16:
+ 793 019b 646F7562 		.ascii	"double\000"
+ 793      6C6500
+ 794              	.LASF18:
+ 795 01a2 6C6F6E67 		.ascii	"long double\000"
+ 795      20646F75 
+ 795      626C6500 
+ 796              	.LASF21:
+ 797 01ae 7365636F 		.ascii	"second\000"
+ 797      6E6400
+ 798              	.LASF11:
+ 799 01b5 756E7369 		.ascii	"unsigned int\000"
+ 799      676E6564 
+ 799      20696E74 
+ 799      00
+ 800              	.LASF10:
+ 801 01c2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 801      206C6F6E 
+ 801      6720756E 
+ 801      7369676E 
+ 801      65642069 
+ 802              	.LASF29:
+ 803 01d9 4932435F 		.ascii	"I2C_Master_MasterReadByte\000"
+ 803      4D617374 
+ 803      65725F4D 
+ 803      61737465 
+ 803      72526561 
+ 804              	.LASF34:
+ 805 01f3 736F6E61 		.ascii	"sonarSensor.c\000"
+ 805      7253656E 
+ 805      736F722E 
+ 805      6300
+ 806              	.LASF24:
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 17
+
+
+ 807 0201 64697374 		.ascii	"dist\000"
+ 807      00
+ 808              	.LASF25:
+ 809 0206 4932435F 		.ascii	"I2C_Master_MasterSendStart\000"
+ 809      4D617374 
+ 809      65725F4D 
+ 809      61737465 
+ 809      7253656E 
+ 810              	.LASF19:
+ 811 0221 73697A65 		.ascii	"sizetype\000"
+ 811      74797065 
+ 811      00
+ 812              	.LASF9:
+ 813 022a 6C6F6E67 		.ascii	"long long int\000"
+ 813      206C6F6E 
+ 813      6720696E 
+ 813      7400
+ 814              	.LASF17:
+ 815 0238 63686172 		.ascii	"char\000"
+ 815      00
+ 816              	.LASF2:
+ 817 023d 73686F72 		.ascii	"short int\000"
+ 817      7420696E 
+ 817      7400
+ 818              	.LASF13:
+ 819 0247 75696E74 		.ascii	"uint16_t\000"
+ 819      31365F74 
+ 819      00
+ 820              	.LASF7:
+ 821 0250 6C6F6E67 		.ascii	"long int\000"
+ 821      20696E74 
+ 821      00
+ 822              	.LASF37:
+ 823 0259 73656E64 		.ascii	"sendData\000"
+ 823      44617461 
+ 823      00
+ 824              	.LASF28:
+ 825 0262 4932435F 		.ascii	"I2C_Master_MasterSendRestart\000"
+ 825      4D617374 
+ 825      65725F4D 
+ 825      61737465 
+ 825      7253656E 
+ 826              	.LASF0:
+ 827 027f 7369676E 		.ascii	"signed char\000"
+ 827      65642063 
+ 827      68617200 
+ 828              	.LASF32:
+ 829 028b 55415254 		.ascii	"UART_1_PutString\000"
+ 829      5F315F50 
+ 829      75745374 
+ 829      72696E67 
+ 829      00
+ 830              	.LASF27:
+ 831 029c 43794465 		.ascii	"CyDelay\000"
+ 831      6C617900 
+ 832              	.LASF22:
+ 833 02a4 64697374 		.ascii	"distCM\000"
+ARM GAS  C:\Users\andre\AppData\Local\Temp\ccUifOi7.s 			page 18
+
+
+ 833      434D00
+ 834              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

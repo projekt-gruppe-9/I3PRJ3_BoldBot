@@ -1,0 +1,6 @@
+C:\Users\andre\Desktop\Motorstyring1.3\Motorstyring.cydsn\Motorstyring.cyprj|915045d8-5cd3-4aa7-87bf-892d840f89e7
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|ef62da91-fffd-476d-86f8-3aa340fd1cd5
+C:\Users\andre\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|5aebde5c-fa26-4c71-971b-1f360c2b3f8a
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|e31ac4fc-f5e7-4bda-9e4c-fa9ac277e4bf
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|1a10155f-6d81-49b8-aea0-311fb11188b4
+C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|c5cb0ab9-f84d-45f2-890e-2e8bd92f74ed
