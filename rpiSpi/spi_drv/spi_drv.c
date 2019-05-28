@@ -16,7 +16,7 @@ static struct cdev spi_drv_cdev;
 //Definition of SPI devices
 struct My_spi {
   struct spi_device *spi; //pointer som peger på device
-  int channel;            // channel, ex. adc ch 0
+  int channel;
 };
 struct My_spi spi_devs[4];//Array af SPI devices
 //Prototypes============================================
@@ -57,7 +57,7 @@ static int spiDriver_init(void){
 
   printk("spi_drv driver initializing\n");
 
-  /* Allocate major number and register fops*/
+  //Allokerer major number og registerer fops
   err = alloc_chrdev_region(&devno, 0, 255, "spi_drv driver");
   if(MAJOR(devno) <= 0){
     ERRGOTO(err_no_cleanup, "Failed to register chardev\n");
@@ -70,7 +70,6 @@ static int spiDriver_init(void){
     ERRGOTO(err_cleanup_chrdev, "Failed to create class");
   }
 
-  /* Polulate sysfs entries */
   spi_drv_class = class_create(THIS_MODULE, "spi_drv_class");
   if (IS_ERR(spi_drv_class)){
       ERRGOTO(err_cleanup_cdev, "Failed to create class");
@@ -98,8 +97,8 @@ static int spiDriver_init(void){
 }
 //Exit function ===================================================
 static void spiDriver_exit(void){
-  spi_unregister_driver(&spi_drv_spi_driver);
-  class_destroy(spi_drv_class);
+  spi_unregister_driver(&spi_drv_spi_driver); //nedlægger device
+  class_destroy(spi_drv_class); //nedlægger class i device tree
   cdev_del(&spi_drv_cdev);
   unregister_chrdev_region(devno, 255);
   printk(KERN_ALERT "Module exit\n");
@@ -135,7 +134,6 @@ ssize_t spiDriver_read(struct file *filep, char __user *ubuf, size_t count, loff
   }
 
   len = snprintf(resultBuf, count, "%d\n", result); //Konverterer integer til string, som max er count len
-  //Returns length excluding NULL termination
   len++;
 
   if(copy_to_user(ubuf, resultBuf, len)) { //kopierer til user space
@@ -144,7 +142,7 @@ ssize_t spiDriver_read(struct file *filep, char __user *ubuf, size_t count, loff
 
   *f_pos += len; // flytter fileptr
 
-  return len;
+  return len;//Returnerer længden
 }
 //write function ===================================================
 ssize_t spiDriver_write(struct file *filep, const char __user *ubuf, size_t count, loff_t *f_pos){
@@ -161,7 +159,7 @@ ssize_t spiDriver_write(struct file *filep, const char __user *ubuf, size_t coun
       return -EFAULT;
   }
 
-  kbuf[len] = '\0'; //Pad null termination to string
+  kbuf[len] = '\0';
 
   if(MODULE_DEBUG)
     printk("string from user: %s\n", kbuf);
@@ -189,8 +187,7 @@ ssize_t spiDriver_write(struct file *filep, const char __user *ubuf, size_t coun
     printk("SPI sync error");
   }
 
-  *f_pos += len;//Legacy file ptr f_pos. Used to support random access but in char drv we dont!
-  //Move it the length actually  written for compability
+  *f_pos += len;
 
   return len;  //returnerer længden
 }
