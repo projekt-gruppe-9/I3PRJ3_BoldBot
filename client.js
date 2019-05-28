@@ -1,4 +1,4 @@
-var socket = io('http://192.168.63.141:5000'); // Den IP som client skal oprette forbindelse til
+var socket = io('http://192.168.43.171:5000'); // Den IP som client skal oprette forbindelse til
 
 socket.on('Forbindelse oprettet', function (data) {
     console.log("Der er hul igennem");
